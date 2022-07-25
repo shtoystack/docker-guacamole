@@ -1,3 +1,5 @@
+# Upgrading to a newer version of PostgreSQL
+
 ## Why?
 
 If you inspect the Dockerfiles in this repo, you will notice that the base image I use for the `1.4.0` or `latest` tags is `tomcat:9.0.64-jre11`. 
@@ -9,6 +11,8 @@ Now, that is a problem for me, as my images used to use postgresql-13. So I need
 postgresql-13. (and for those who were looking for a replacement of Oznu's original image when Guacamole 1.4.0 came out, that was a problem too at the time). 
 
 And I don't like that, so in the future, I will slowly try to migrate my images to the version of postgresql available in the base repositories.
+
+These instructions can be used to upgrade from any version of PostgreSQL to a newer version (meaning, you can use these instructions to upgrade from [oznu's image](hub.docker.com/r/oznu/guacamole/)).
 
 ## Is this a problem for the users?
 
