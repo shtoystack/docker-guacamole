@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker buildx build -f Dockerfile.ubuntu --platform linux/amd64,linux/arm64 -t abesnier/guacamole:1.4.0 -t abesnier/guacamole:latest --push .
-docker buildx build -f Dockerfile.bullseye --platform linux/amd64,linux/arm64 -t abesnier/guacamole:1.4.0-bullseye -t abesnier/guacamole:latest-bullseye --push . 
-docker buildx build -f Dockerfile.ubuntu.pg14 --platform linux/amd64,linux/arm64 -t abesnier/guacamole:1.4.0-pg14 -t abesnier/guacamole:latest-pg14 --push .
+docker buildx build --no-cache -f Dockerfile.ubuntu --platform linux/amd64,linux/arm64 -t abesnier/guacamole:1.4.0 -t abesnier/guacamole:latest --push .
+docker buildx build --no-cache -f Dockerfile.bullseye --platform linux/amd64,linux/arm64 -t abesnier/guacamole:1.4.0-bullseye -t abesnier/guacamole:latest-bullseye --push . 
+docker buildx build --no-cache -f Dockerfile.ubuntu.pg14 --platform linux/amd64,linux/arm64 -t abesnier/guacamole:1.4.0-pg14 -t abesnier/guacamole:latest-pg14 --push .
