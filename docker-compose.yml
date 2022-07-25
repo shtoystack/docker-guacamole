@@ -1,0 +1,13 @@
+version: '3'
+services:
+    guacamole:
+        image: abesnier/guacamole
+        restart: always
+        container_name: guacamoletest
+        environment:
+            - TZ=Europe/Paris
+        volumes:
+            - "/srv/minecraft/dockertests/guacamole/config:/config"
+        ports:
+            - "8080:8080"
+

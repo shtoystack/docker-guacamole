@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker buildx build --no-cache -f Dockerfile.ubuntu.pg14 --platform linux/amd64,linux/arm64 -t abesnier/guacamole:1.4.0-pg14 -t abesnier/guacamole:latest-pg14 --push .
