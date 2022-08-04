@@ -6,6 +6,8 @@
 
 # What's new
 
+**2022-08-04** - All tags updated to PostgreSQL 42.4.1 
+
 **2022-07-22** - All tags updated to Tomcat 9.0.65
 
 
