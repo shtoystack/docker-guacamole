@@ -44,7 +44,7 @@
 #
 # 2022-06-30 - Guacamole Server is now built on GitHub source code, updated to S6 Overlay v3.1.1.2
 #
-# 2022-08-04 - updated to PostGresJDBC 42.4.1
+# 2022-08-04 - updated to PostGresJDBC 42.4.1  
 
 FROM library/tomcat:9.0.65-jre11
 
