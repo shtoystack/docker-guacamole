@@ -5,11 +5,15 @@
 
 
 # What's new
+2022-08-05 - All tags reverted to PostgresJDBC 42.4.0, as it appears images cannot start properly with 42.4.1. I need to investigate why, but I noticed an fatal error during some random testing: 
+`### Error querying database. Cause: java.sql.SQLException: Error setting driver on UnpooledDataSource. Cause: java.lang.ClassNotFoundException: org.postgresql.Driver`
 
-**2022-08-04** - All tags updated to PostgreSQL 42.4.1 
+So I decided to rebuild the image with 42.4.0. I will continue testing until resolved.
+
+
+**2022-08-04** - All tags updated to PostgresJDBC 42.4.1
 
 **2022-07-22** - All tags updated to Tomcat 9.0.65
-
 
 **2022-07-01** - Follow up on moving from the base image to Ubuntu Jammy (22.04.4 LTS). The default postgresql package is in version [14.3](https://packages.ubuntu.com/jammy/postgresql), and if you inspect the Dockerfiles, you will see that I need to add the official postgres repository to be able to install postgresql-13.
 
