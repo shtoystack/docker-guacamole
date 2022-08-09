@@ -5,6 +5,11 @@
 
 
 # What's new
+
+**2022-08-09** - Added an extension `guacamole-branding-1.4.0.jar`. It now comes enabled by default, and its sole effect is to add links to the official Apache Guacamole webpage, to my github, and to the issue page on github.
+
+The idea of this extension is to show that even a docker image can use the branding possibilities of Guacamole. If you have an existing branding extension, you can just drop it in the `config/guacamole/extensions` directory and restart the container.
+
 **2022-08-05** - All tags reverted to PostgresJDBC 42.4.0, as it appears images cannot start properly with 42.4.1. I need to investigate why, but I noticed an fatal error during some random testing: 
 
 `### Error querying database. Cause: java.sql.SQLException: Error setting driver on UnpooledDataSource. Cause: java.lang.ClassNotFoundException: org.postgresql.Driver`
