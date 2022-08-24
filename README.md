@@ -5,6 +5,7 @@
 
 
 # What's new
+**2022-08-24** - All tags updated to PostGresJDBC 42.4.2
 
 **2022-08-09** - Added an extension `guacamole-branding-1.4.0.jar`. It now comes enabled by default, and its sole effect is to add links to the official Apache Guacamole webpage, to my github, and to the issue page on github.
 
