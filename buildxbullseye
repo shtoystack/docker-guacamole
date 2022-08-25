@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker buildx build --no-cache -f Dockerfile.all --platform linux/amd64,linux/arm64 -t abesnier/guacamole:1.4.0-bullseye -t abesnier/guacamole:latest-bullseye --push .

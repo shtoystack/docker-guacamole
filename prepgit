@@ -1,4 +1,0 @@
-#!/bin/bash
-export GPG_TTY=GPG_TTY=$(tty)
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/rsa_github.pub 
