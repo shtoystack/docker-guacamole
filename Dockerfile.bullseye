@@ -47,6 +47,8 @@
 # 2022-08-04 - update to PostgresJDBC 42.4.1  
 #
 # 2022-08-04 - updated to PostGresJDBC 42.4.2
+#
+# 2022-08-29 - update to S6 Overlay v3.1.2.0
 
 FROM library/tomcat:9.0.65-jre11-openjdk-slim-bullseye
 
@@ -54,7 +56,7 @@ ENV GUACAMOLE_HOME=/app/guacamole \
   PGDATA=/config/postgres \
   POSTGRES_USER=guacamole \
   POSTGRES_DB=guacamole_db \
-  S6OVERLAY_VER=3.1.1.2 \
+  S6OVERLAY_VER=3.1.2.0 \
   POSTGREJDBC_VER=42.5.0 \
   GUAC_VER=1.4.0 \
   PG_MAJOR=13

@@ -5,6 +5,8 @@
 
 
 # What's new
+**2022-08-29** - All tags updated to S6 Overlay v3.1.2.0
+
 **2022-08-24** - All tags updated to PostgreSQL JDBC 42.5.0 (yes, the same day I updated them to 42.4.2, the wonderful PostgreSQL JDBC team released another version...)
 
 **2022-08-24** - All tags updated to PostgreSQL JDBC 42.4.2
