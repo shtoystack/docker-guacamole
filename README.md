@@ -276,7 +276,7 @@ There is a know bug, where, in certain conditions, the underscore character is n
 Based on some investigations, it seems the issue is with the libpango library (text rendering library), that is used by Guacamole. The issue has been known for quite a few years now by the library team, but unfortunately, it does not look like a solution will ever be found, as it really appears to be quite random and difficult to reproduce.
 
 
-[![IMAGE ALT TEXT](https://github.com/abesnier/docker-guacamole/raw/master/withunderscore.PNG)](https://github.com/abesnier/docker-guacamole/raw/master/withunderscore.PNG|width=200px)
+[![IMAGE ALT TEXT](https://github.com/abesnier/docker-guacamole/raw/master/underscore.png)](https://github.com/abesnier/docker-guacamole/raw/master/underscore.png|width=200px)
 
 
 Please have a look at this [JIRA issue](https://issues.apache.org/jira/browse/GUACAMOLE-1478?jql=project%20%3D%20GUACAMOLE%20AND%20text%20~%20underscore) for details.
