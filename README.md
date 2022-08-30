@@ -4,7 +4,9 @@
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
 
-# What's new
+# What's new / Changelog
+**2022-08-30** - All tags updated to S6 Overlay v3.1.2.1.
+
 **2022-08-29** - All tags updated to S6 Overlay v3.1.2.0.
 
 **2022-08-24** - All tags updated to PostgreSQL JDBC 42.5.0 (yes, the same day I updated them to 42.4.2, the wonderful PostgreSQL JDBC team released another version...)
