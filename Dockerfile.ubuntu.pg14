@@ -65,10 +65,10 @@ ENV GUACAMOLE_HOME=/app/guacamole \
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-	apt-get install -y --no-install-recommends\
+    apt-get install -y --no-install-recommends\
       curl \
-	  git \
-	  xz-utils
+      git \
+      xz-utils
 
 # Apply the s6-overlay
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-noarch.tar.xz /tmp/
@@ -104,7 +104,7 @@ RUN apt-get update && apt-get upgrade -y -t jammy-backports && \
       libjpeg-turbo8-dev \
       libossp-uuid-dev \
       libpango1.0-dev \
-	  libpng-dev \
+      libpng-dev \
       libpulse-dev \
       libssh2-1-dev \
       libssl-dev \
