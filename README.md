@@ -5,6 +5,13 @@
 
 **Every month, inactive images on Docker Hub will be removed. If you use one of those, you'll need to update to a newer image.**
 
+
+# Summary of images
+Base OS | PostgreSQL 13 | PostgreSQL 14
+Bullseye | guacamole:1.4.0-bullseye | N/A
+Ubuntu | guacamole:1.4.0 | guacamole:1.4.0-pg14
+
+
 # What's new / Changelog
 **2022-08-30** - All tags updated to S6 Overlay v3.1.2.1.
 
