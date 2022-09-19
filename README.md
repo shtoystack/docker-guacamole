@@ -8,6 +8,7 @@
 
 # Summary of images
 Base OS | PostgreSQL 13 | PostgreSQL 14
+---|---|---
 Bullseye | guacamole:1.4.0-bullseye | N/A
 Ubuntu | guacamole:1.4.0 | guacamole:1.4.0-pg14
 
