@@ -2,7 +2,7 @@
 
 ## Why?
 
-If you inspect the Dockerfiles in this repo, you will notice that the base image I use for the `1.4.0` or `latest` tags is `tomcat:9.0.64-jre11`. 
+If you inspect the Dockerfiles in this repo, you will notice that the base image I use for the `1.4.0` or `latest` tags is `tomcat:9.0.67-jre11` (at the time of writing this guide). 
 
 This image in turn is based on Ubuntu Jammy (22.04.4 LTS). And this version of Ubuntu comes with [postgresql-14 ](https://packages.ubuntu.com/jammy/postgresql) in its official 
 repositories. 
