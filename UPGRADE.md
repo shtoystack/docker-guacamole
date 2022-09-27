@@ -35,6 +35,7 @@ Thankfully, the upgrade process *should* be quite easy:
     This should return something like: `psql (PostgreSQL) 14.3 (Ubuntu 14.3-0ubuntu0.22.04.1)`
     
 7. Run `docker exec -it guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"` 
+8. If the above command returns an error, check the logs (`docker logs guacamole`) and confirm that PostgreSQL is running. It may not have been able to start, as the sql files already present in the config/postgres directory are not compatible from PG13 to PG14. In that case, stop the container, and delete the config/postegres directory. Make sure that your `guacamole_db_backup.tar` is safe!! Once deleted, restart the pg14 container, and run the command above one more time.
 9. Open your browser to your guacamole home page, and confirm it works. It should.
 
 ## Are you sure?
