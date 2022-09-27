@@ -3,7 +3,7 @@
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
-**Every month, inactive images on Docker Hub will be removed. If you use one of those, you'll need to update to a newer image.**
+**Every month, inactive images on Docker Hub will be removed. If you use one of those, you'll need to update to a newer image.**  If you need to keep a specific image, please raise an  [Issue](https://github.com/abesnier/docker-guacamole/issues), so I can track it.
 
 
 # Summary of images
