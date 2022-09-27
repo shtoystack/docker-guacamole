@@ -14,6 +14,8 @@ Ubuntu | guacamole:1.4.0 | guacamole:1.4.0-pg14
 
 
 # What's new / Changelog
+**2022-09-27** - All tags updated to Tomcat 9.0.67.
+
 **2022-08-30** - All tags updated to S6 Overlay v3.1.2.1.
 
 **2022-08-29** - All tags updated to S6 Overlay v3.1.2.0.

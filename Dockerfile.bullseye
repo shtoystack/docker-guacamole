@@ -51,8 +51,10 @@
 # 2022-08-29 - updated to S6 Overlay v3.1.2.0
 #
 # 2022-08-30 - updated to S6 Overlay v3.1.2.1
+#
+# 2022-09-27 - updated to Tomcat 9.0.67
 
-FROM library/tomcat:9.0.65-jre11-openjdk-slim-bullseye
+FROM library/tomcat:9.0.67-jre11-openjdk-slim-bullseye
 
 ENV GUACAMOLE_HOME=/app/guacamole \
   PGDATA=/config/postgres \
