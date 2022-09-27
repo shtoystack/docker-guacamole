@@ -16,6 +16,10 @@ Ubuntu | guacamole:1.4.0 | guacamole:1.4.0-pg14
 # What's new / Changelog
 **2022-09-27** - Ubuntu-based images updated to Tomcat 9.0.67 (latest, latest-pg14, 1.4.0, 1.4.0-pg14).
 
+It seems the Bullseye-based Tomcat images will not be maintained anymore by the Docker Community (see [this commit](https://github.com/docker-library/tomcat/commit/2133bd5eb90e808de7dc51e5e980091e765af90b)), and therefore, the bullseye image will disappear from my repo too, as I intend to only keep up-to-date images.
+
+Replacement from 1.4.0-bullseye to 1.4.0 is one-to-one, and works without disrupting the user space. If you are using `abesnier/1.4.0-bullseye` or `latest-bullseye`, just drop the `-bullseye` from your command line or your `docker-compose.yml` and it will be transparent next time you start your container.
+
 **2022-08-30** - All tags updated to S6 Overlay v3.1.2.1.
 
 **2022-08-29** - All tags updated to S6 Overlay v3.1.2.0.
