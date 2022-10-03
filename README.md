@@ -1,5 +1,4 @@
-**This is a fork of oznu/docker-guacamole, updated to tomcat9.0.65 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.4.0, and s6_overlay 3.1.**
-
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.67 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.4.0, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
