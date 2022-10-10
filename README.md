@@ -1,4 +1,4 @@
-**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.67 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.4.0, and s6_overlay 3.1.**
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.68 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.4.0, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
@@ -13,6 +13,8 @@ Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guaca
 
 
 # What's new / Changelog
+**2022-10-10** - Ubuntu-based images updated to Tomcat 9.0.68 (latest, latest-pg14, 1.4.0, 1.4.0-pg14).
+
 **2022-09-27** - Ubuntu-based images updated to Tomcat 9.0.67 (latest, latest-pg14, 1.4.0, 1.4.0-pg14).
 
 It seems the Bullseye-based Tomcat images will not be maintained anymore by the Docker Community (see [this commit](https://github.com/docker-library/tomcat/commit/2133bd5eb90e808de7dc51e5e980091e765af90b)), and therefore, the bullseye image will disappear from my repo too, as I intend to only keep up-to-date images.
