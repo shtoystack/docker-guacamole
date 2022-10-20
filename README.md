@@ -13,6 +13,8 @@ Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guaca
 
 
 # What's new / Changelog
+**2022-10-20** - Added a Docker HEALTHCHECK. Containers will report their health status every minute.
+
 **2022-10-10** - Ubuntu-based images updated to Tomcat 9.0.68 (latest, latest-pg14, 1.4.0, 1.4.0-pg14).
 
 **2022-09-27** - Ubuntu-based images updated to Tomcat 9.0.67 (latest, latest-pg14, 1.4.0, 1.4.0-pg14).
