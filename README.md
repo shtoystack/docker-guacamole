@@ -10,9 +10,17 @@ Base OS | PostgreSQL 13 | PostgreSQL 14
 ---|---|---
 Bullseye | guacamole:1.4.0-bullseye | N/A
 Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guacamole:latest-pg14
-
+Alpine | N/A | guacamole:alpine
 
 # What's new / Changelog
+**2020-10-21** - Created a new image, `alpine`. The idea was to have a smaller image. It is about 40% smaller than the `latest` image.
+
+This image is based on Alpine Edge, and uses PostegreSQL 14 and S6 overlay.
+
+As far as I tested it, it can be used as a replacement for a previous PostgreSQL 14 image (`guacamole:1.4.0-pg14` or `guacamole:latest-pg14`).
+
+It has been tested as far as I could, but in case of issue, as usual, please report the [issues](https://github.com/abesnier/docker-guacamole/issues).
+
 **2022-10-20** - Added a Docker HEALTHCHECK. Containers will report their health status every minute.
 
 **2022-10-10** - Ubuntu-based images updated to Tomcat 9.0.68 (latest, latest-pg14, 1.4.0, 1.4.0-pg14).
@@ -40,7 +48,6 @@ The idea of this extension is to show that even a docker image can use the brand
 `### Error querying database. Cause: java.sql.SQLException: Error setting driver on UnpooledDataSource. Cause: java.lang.ClassNotFoundException: org.postgresql.Driver`
 
 So I decided to rebuild the image with 42.4.0. I will continue testing until resolved.
-
 
 **2022-08-04** - All tags updated to PostgresJDBC 42.4.1
 
