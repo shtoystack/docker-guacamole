@@ -20,7 +20,7 @@ Yes, because databases are not compatible between major versions of postgresql a
 
 If you try to upgrade in place (just upgrade from a postgresql-13 image to a postgresql-14 image), postgresql server will start, but will spew errors, telling you that the databases were created with an inferior version, and you will not be able to log in to guacamole, or use your previously setup connections. 
 
-That is not ideal to frank.
+That is not ideal to be frank.
 
 ## Then how do I upgrade?
 
