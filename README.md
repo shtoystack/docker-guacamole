@@ -13,6 +13,8 @@ Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guaca
 Alpine | N/A | guacamole:alpine
 
 # What's new / Changelog
+**2022-11-09** - Added support for arm/v7 and ppc64el for supported images (both for `alpine` and `latest-pg14`, ppc64el only for `latest`, and nothing new for `bullseye`). 
+
 **2020-10-21** - Created a new image, `alpine`. The idea was to have a smaller image. It is about 40% smaller than the `latest` image.
 
 This image is based on Alpine Edge, and uses PostegreSQL 14 and S6 overlay.
