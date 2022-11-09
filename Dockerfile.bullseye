@@ -68,30 +68,27 @@ ENV GUACAMOLE_HOME=/app/guacamole \
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y \
       curl \
-      xz-utils    
-
+      xz-utils \
 # Apply the s6-overlay
-ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-noarch.tar.xz /tmp/
-ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-x86_64.tar.xz /tmp/
-ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-aarch64.tar.xz /tmp/
-ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-symlinks-noarch.tar.xz /tmp/
-ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/syslogd-overlay-noarch.tar.xz /tmp/
-RUN tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz \
+&& cd /tmp \
+&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-noarch.tar.xz \
+&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-x86_64.tar.xz \
+&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-aarch64.tar.xz \
+&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-symlinks-noarch.tar.xz \
+&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/syslogd-overlay-noarch.tar.xz \
+&& tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz \
     && if [ "$(arch)" = "x86_64" ] ; then tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz; else tar -C / -Jxpf /tmp/s6-overlay-aarch64.tar.xz; fi  \
     && tar -C / -Jxpf /tmp/s6-overlay-symlinks-noarch.tar.xz \
     && tar -C / -Jxpf /tmp/syslogd-overlay-noarch.tar.xz \
-    && rm /tmp/*.tar.xz
-
+    && cd / && rm /tmp/*.tar.xz \
 # Create guacamole directories
-RUN mkdir -p ${GUACAMOLE_HOME} \ 
+&&  mkdir -p ${GUACAMOLE_HOME} \ 
               ${GUACAMOLE_HOME}/lib \
               ${GUACAMOLE_HOME}/extensions \
-              ${GUACAMOLE_HOME}/extensions-available
-
-WORKDIR ${GUACAMOLE_HOME}
-
+              ${GUACAMOLE_HOME}/extensions-available \
+&& cd ${GUACAMOLE_HOME} \
 # Install dependencies
-RUN echo "deb http://deb.debian.org/debian bullseye-backports main contrib non-free" > /etc/apt/sources.list.d/backports.list && \
+&& echo "deb http://deb.debian.org/debian bullseye-backports main contrib non-free" > /etc/apt/sources.list.d/backports.list && \
     apt-get update && apt-get upgrade -y -t bullseye-security && \
     apt-get upgrade -y -t bullseye-backports && \
     apt-get install -y \
@@ -118,16 +115,13 @@ RUN echo "deb http://deb.debian.org/debian bullseye-backports main contrib non-f
       libwebp-dev \
       libwebsockets-dev \
       make \
-      postgresql-${PG_MAJOR}
-
+      postgresql-${PG_MAJOR} \
 # Link FreeRDP to where guac expects it to be
-RUN ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabihf/freerdp || exit 0 \
-    && ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp || exit 0 \
-    && ln -s /usr/local/lib/freerdp /usr/lib/aarch64-linux-gnu/freerdp || exit 0
-
-# Install guacamole-server
-
-RUN curl -SLO "https://dlcdn.apache.org/guacamole/${GUAC_VER}/source/guacamole-server-${GUAC_VER}.tar.gz" \
+&& ( ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabihf/freerdp ||  \
+     ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp ||  \
+     ln -s /usr/local/lib/freerdp /usr/lib/aarch64-linux-gnu/freerdp || true ) \
+# Install guacamole-server \
+&& curl -SLO "https://dlcdn.apache.org/guacamole/${GUAC_VER}/source/guacamole-server-${GUAC_VER}.tar.gz" \
   && tar -xzf guacamole-server-${GUAC_VER}.tar.gz \
   && cd guacamole-server-${GUAC_VER} \
   && ./configure --enable-allow-freerdp-snapshots \
@@ -184,4 +178,4 @@ EXPOSE 8080
 
 ENTRYPOINT [ "/init" ]
 
-HEALTHCHECK  --interval=1m --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:8080 || exit 1
+HEALTHCHECK  --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:8080 || exit 1

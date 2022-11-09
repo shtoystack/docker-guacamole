@@ -14,7 +14,7 @@ ENV CATALINA_HOME=/opt/tomcat \
 RUN set -xe && \
     apk update && \
     apk upgrade && \
-    apk add openjdk11-jre-headless \
+    apk add openjdk8-jre \
             git \  
             curl \  
             libc-dev \ 
@@ -57,11 +57,13 @@ RUN set -xe && \
     tar -C / -Jxpf /tmp/s6-overlay-symlinks-noarch.tar.xz && \
     tar -C / -Jxpf /tmp/syslogd-overlay-noarch.tar.xz && \
     rm /tmp/*.tar.xz &&\
-    ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabihf/freerdp || exit 0 &&\
-    ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp || exit 0 &&\
-    ln -s /usr/local/lib/freerdp /usr/lib/aarch64-linux-gnu/freerdp || exit 0 
-
-RUN set -xe &&  mkdir -p ${CATALINA_HOME}  \
+    ( ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabihf/freerdp ||  \
+     ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabi/freerdp   || \
+     ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp    ||  \
+     ln -s /usr/local/lib/freerdp /usr/lib/aarch64-linux-gnu/freerdp   || \
+	 ln -s /usr/local/lib/freerdp /usr/lib/ppc64el-linux-gnu/freerdp   || \
+	 ln -s /usr/local/lib/freerdp /usr/lib/aarch64-linux-gnu/freerdp   || true ) &&\
+    mkdir -p ${CATALINA_HOME}  \
                          ${GUACAMOLE_HOME} \
                          ${GUACAMOLE_HOME}/lib \
                          ${GUACAMOLE_HOME}/extensions \

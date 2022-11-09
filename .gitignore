@@ -1,3 +1,4 @@
 prepgit
 buildx*
 update*
+Dockerfile.test
