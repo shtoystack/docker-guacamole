@@ -13,7 +13,9 @@ Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guaca
 Alpine | N/A | guacamole:alpine
 
 # What's new / Changelog
-**2022-11-16** - 
+**2022-11-27** - Updated to PostgreSQL JDBC 42.5.1
+
+**2022-11-16** - Updated to Tomcat 9.0.69
 
 **2022-11-09** - Added support for arm/v7 and ppc64el for supported images (both for `alpine` and `latest-pg14`, ppc64el only for `latest`, and nothing new for `bullseye`). 
 
