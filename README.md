@@ -13,6 +13,8 @@ Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guaca
 Alpine | N/A | guacamole:alpine
 
 # What's new / Changelog
+**2022-12-08** - Updated to Tomcat 9.0.70
+
 **2022-11-27** - Updated to PostgreSQL JDBC 42.5.1
 
 **2022-11-16** - Updated to Tomcat 9.0.69

@@ -55,8 +55,10 @@
 # 2022-09-27 - updated to Tomcat 9.0.67
 #
 # 2022-09-27 - updated to Tomcat 9.0.68
+#
+# 2022-12-08 - updated to Tomcat 9.0.70
 
-FROM library/tomcat:9.0.69-jre11
+FROM library/tomcat:9.0.70-jre11
 
 ENV GUACAMOLE_HOME=/app/guacamole \
   PGDATA=/config/postgres \
