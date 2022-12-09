@@ -1,4 +1,6 @@
+.gitignore
 prepgit
 buildx*
 update*
 Dockerfile.test
+Dockerfile.ubuntu.libssh
