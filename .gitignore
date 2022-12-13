@@ -5,3 +5,5 @@ update*
 Dockerfile.test
 Dockerfile.ubuntu.libssh
 root_pg14_test
+*.war
+*.jar
