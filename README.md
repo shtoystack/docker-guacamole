@@ -15,9 +15,9 @@ Alpine | N/A | guacamole:alpine
 # What's new / Changelog
 **2022-12-13** - Added support for the environment variable "GUACD_LOG_LEVEL" for all images, to match with the official Guacamole Image, and provide users a way to debug their application.
 
-The value is set by default to `info`. The valid values are `error`, `warn`, `info`, `debug` and `trace`. See the [Official documentation](https://guacamole.apache.org/doc/gug/configuring-guacamole.html?highlight=debug#logging-within-the-web-application) for more details.
+The value is set by default to `info`. The valid values are `error`, `warn`, `info`, `debug` and `trace`. See the [Official documentation](https://guacamole.apache.org/doc/gug/configuring-guacamole.html?logging-within-the-web-application#logging-within-the-web-application) for more details.
 
-The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your `docker run command`, or in the environment section of your `docker-compose.yml` file. 
+The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your `docker run` command, or in the environment section of your `docker-compose.yml` file. 
 
 **2022-12-08** - Updated to Tomcat 9.0.70
 
