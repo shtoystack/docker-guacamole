@@ -1,4 +1,4 @@
-**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.68 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.4.0, and s6_overlay 3.1.**
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.70 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.4.0, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
@@ -146,14 +146,19 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 # Available tags
 
 
-`1.4.0` `latest` , version 1.4.0, based on latest Tomcat, PostgresJDBC driver and S6 Overlay available at time of build.
+`1.4.0` `latest` , version 1.4.0, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
+`1.4.0-pg14` `latest-pg14` , version 1.4.0, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.3.0` , version 1.3.0, based on latest Tomcat, PostgresJDBC driver available at time of build, and S6 Overlay 2.2.0.3.
+`1.4.0-bullseye` `latest-bullseye`, version 1.4.0, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
 
+`alpine`, version 1.4.0, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver available at time of build, and S6 Overlay 2.2.0.3.
 
-`github` compiled from available source code on github for guacamole-client and guacamole-server.
+## Stale/unmaintained tags
 
+`github` `test` compiled from available source code on github for guacamole-client and guacamole-server.
+
+`1.3.0` version 1.3.0, based on latest Tomcat, PostgresJDBC driver available at time of build, and S6 Overlay 2.2.0.3.
 
 `1.4.0-s6_v3` updated to s6 overlay 3.0.0.0 and tomcat:9.0.58-jre11 (note: This image is built on a custom build of s6 overlay. It will be renamed as latest when s6 overlay is fixed and I can use the [release tarballs](https://github.com/just-containers/s6-overlay/releases/).)
 
@@ -341,7 +346,7 @@ The second solution is easy to implement, but it must be done by the admin. Go t
 
 ### The container fails to start properly
 
-If the docker seems to not start properly, check the logs  with `docker logs <container_name>`.
+If the docker seems to not start properly, check the logs with `docker logs <container_name>`. It may be usefull to start the container with a higher debug verbosity, by using the GUACD_LOG_LEVEL environment variable. The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your docker run command, or in the environment section of your `docker-compose.yml` file. The log will be more verbose, and will help you pinpoint the errors.
 
 
 If you see lines like this one: `postgres: could not access the server configuration file "/config/postgres/postgresql.conf": No such file or directory`, this means that the configuration volume could not be mounted properly. 
@@ -433,11 +438,9 @@ And of course, don't forget to look at the [official documentation](https://guac
 
 ## License
 
+Copyright (C) 2021-2022 abesnier
 
 Copyright (C) 2017-2020 oznu
-
-
-Copyright (C) 2021-2022 abesnier
 
 
 Apache Guacamole is released under the Apache License version 2.0.
