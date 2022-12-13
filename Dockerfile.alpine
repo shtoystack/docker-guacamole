@@ -103,7 +103,8 @@ RUN set -xe && \
 COPY root_alpine /
 
 ENV PATH=/usr/lib/postgresql/${PG_MAJOR}/bin:$PATH \
-    GUACAMOLE_HOME=/config/guacamole
+    GUACAMOLE_HOME=/config/guacamole \
+    GUACD_LOG_LEVEL=info
 
 WORKDIR /config
 

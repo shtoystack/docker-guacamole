@@ -177,6 +177,7 @@ COPY ./guacamole-branding-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available
 
 ENV PATH=/usr/lib/postgresql/${PG_MAJOR}/bin:$PATH
 ENV GUACAMOLE_HOME=/config/guacamole
+ENV GUACD_LOG_LEVEL=info
 
 COPY root_pg14 /
 
