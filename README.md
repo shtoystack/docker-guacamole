@@ -21,6 +21,10 @@ The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your `doc
 
 **2022-12-08** - Updated to Tomcat 9.0.70
 
+<details>
+<summary>Older entries</summary>
+
+
 **2022-11-27** - Updated to PostgreSQL JDBC 42.5.1
 
 **2022-11-16** - Updated to Tomcat 9.0.69
@@ -142,6 +146,7 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 
 **2022-01-03** - updated to version 1.4.0
 
+</details>
 
 # Available tags
 
