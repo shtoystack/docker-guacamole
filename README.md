@@ -22,7 +22,7 @@ The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your `doc
 **2022-12-08** - Updated to Tomcat 9.0.70
 
 <details>
-<summary>Older changelog entries</summary>
+<summary>**Older changelog entries**</summary>
 
 **2022-11-27** - Updated to PostgreSQL JDBC 42.5.1
 
