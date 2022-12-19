@@ -2,61 +2,7 @@
 #
 # Maintained by Antoine Besnier <nouanda@laposte.net>
 #
-# 2021-12-17:
-# Sooo.... I tried to upgrade tomcat to 10, and spent a few days trying to figure out why guacamole was not working... 
-# Turns out guacamole is not compatible with Tomcat 10... https://issues.apache.org/jira/browse/GUACAMOLE-1325
-# 
-# That being said, it was still possible to upgrade the following components:
-# tomcat -> 9.0.56
-# postgresql -> 13
-# s6 overlay -> 2.2.03
-# postgresql jdbc -> 42.3.1
-#
-# URLs for Guacamole downloads were also updated
-#
-# 2022-01-03 - updated to guacamole 1.4
-#
-# 2022-01-31 - updated to s6 overlay 3.0.0.2 and tomcat 9.0.58
-#
-# 2022-02-03 - updated to build on arm64
-#
-# 2022-02-07 - updated to Postgres jdbc 42.3.2
-#
-# 2022-02-22 - updated to s6 overlay 3.0.0.2-2
-#
-# 2022-03-01 - updated to PostgresJDBC 42.3.3, tomcat 9.0.59
-#
-# 2022-03-08 - updated to S6 Overlay v3.1.0.1
-#
-# 2022-03-16 - updated to tomcat 9.0.60
-#
-# 2022-04-19 - updated to tomcat 9.0.62 and PostGresJDBC 42.3.4
-#
-# 2022-05-11 - updated to PostGresJDBC 42.3.5
-#
-# 2022-05-18 - updated to tomcat 9.0.63
-#
-# 2022-05-31 - updated to PostgresJDBC 42.3.6
-#
-# 2022-06-10 - updated to tomcat 9.0.64 and PostGresJDBC 42.4.0
-#
-# 2022-06-20 - updated to S6 Overlay v3.1.1.0
-#
-# 2022-06-30 - Guacamole Server is now built on GitHub source code, updated to S6 Overlay v3.1.1.2
-#
-# 2022-08-04 - updated to PostGresJDBC 42.4.1  
-#
-# 2022-08-23 - updated to PostGresJDBC 42.4.2  
-#
-# 2022-08-29 - updated to S6 Overlay v3.1.2.0
-#
-# 2022-08-30 - updated to S6 Overlay v3.1.2.1
-#
-# 2022-09-27 - updated to Tomcat 9.0.67
-#
-# 2022-09-27 - updated to Tomcat 9.0.68
-#
-# 2022-12-08 - updated to Tomcat 9.0.70
+# 2022-12-19 - Changelog maintained in README.md
 
 FROM library/tomcat:9.0.70-jre11
 
