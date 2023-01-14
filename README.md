@@ -1,4 +1,4 @@
-**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.70 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.4.0, and s6_overlay 3.1.**
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.71 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.4.0, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
@@ -13,6 +13,8 @@ Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guaca
 Alpine | N/A | guacamole:alpine
 
 # What's new / Changelog
+**2023-01-14** - Updated to Tomcat 9.0.71
+
 **2022-12-13** - Added support for the environment variable "GUACD_LOG_LEVEL" for all images, to match with the official Guacamole Image, and provide users a way to debug their application.
 
 The value is set by default to `info`. The valid values are `error`, `warn`, `info`, `debug` and `trace`. See the [Official documentation](https://guacamole.apache.org/doc/gug/configuring-guacamole.html?logging-within-the-web-application#logging-within-the-web-application) for more details.
