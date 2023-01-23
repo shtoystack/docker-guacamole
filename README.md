@@ -13,6 +13,8 @@ Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guaca
 Alpine | N/A | guacamole:alpine
 
 # What's new / Changelog
+**2023-01-23** - Updated to S6 Overlay 3.1.3.0
+
 **2023-01-14** - Updated to Tomcat 9.0.71
 
 **2022-12-13** - Added support for the environment variable "GUACD_LOG_LEVEL" for all images, to match with the official Guacamole Image, and provide users a way to debug their application.
@@ -158,7 +160,7 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 
 `1.4.0-bullseye` `latest-bullseye`, version 1.4.0, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`alpine`, version 1.4.0, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver available at time of build, and S6 Overlay 2.2.0.3.
+`alpine`, version 1.4.0, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
 
 ## Stale/unmaintained tags
 
