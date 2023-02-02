@@ -13,7 +13,7 @@ Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guaca
 Alpine | N/A | guacamole:alpine
 
 # What's new / Changelog
-**2023-02-01** - Updated to PostgreSQL JDBC 42.5.2
+**2023-02-01** - Updated to PostgreSQL JDBC 42.5.2. Images are now built with the `--provenance=false` flag, to mitigate issue with manifests and WatchTower (thanks to the users referencing my image in WatchTower by the way!). See [here](https://github.com/containrrr/watchtower/discussions/1529) for details.
 
 **2023-01-23** - Updated to S6 Overlay 3.1.3.0
 
