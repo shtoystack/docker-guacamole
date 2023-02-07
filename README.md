@@ -15,7 +15,9 @@ Alpine | N/A | guacamole:alpine
 # What's new / Changelog
 **2023-02-06** - Updated to PostgreSQL JDBC 42.5.3. 
 
-**2023-02-01** - Updated to PostgreSQL JDBC 42.5.2. Images are now built with the `--provenance=false` flag, to mitigate issue with manifests and WatchTower (thanks to the users referencing my image in WatchTower by the way!). See [here](https://github.com/containrrr/watchtower/discussions/1529) for details.
+**2023-02-01** - Updated to PostgreSQL JDBC 42.5.2.
+
+Images are now built with the `--provenance=false` flag, to mitigate issue with manifests and WatchTower (thanks to the users referencing my image in WatchTower by the way!). See [here](https://github.com/containrrr/watchtower/discussions/1529) for details.
 
 **2023-01-23** - Updated to S6 Overlay 3.1.3.0
 
@@ -27,10 +29,10 @@ The value is set by default to `info`. The valid values are `error`, `warn`, `in
 
 The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your `docker run` command, or in the environment section of your `docker-compose.yml` file. 
 
-**2022-12-08** - Updated to Tomcat 9.0.70
-
 <details>
 <summary>Older changelog entries</summary>
+
+**2022-12-08** - Updated to Tomcat 9.0.70
 
 **2022-11-27** - Updated to PostgreSQL JDBC 42.5.1
 
@@ -80,21 +82,16 @@ So I decided to rebuild the image with 42.4.0. I will continue testing until res
 
 **2022-07-01** - Follow up on moving from the base image to Ubuntu Jammy (22.04.4 LTS). The default postgresql package is in version [14.3](https://packages.ubuntu.com/jammy/postgresql), and if you inspect the Dockerfiles, you will see that I need to add the official postgres repository to be able to install postgresql-13.
 
-
 I don't like that, as I am used to using Debian, and learnt not to mix repositories if you can avoid it.
-
 
 So, I have created a new tag "latest-pg14" in order to test the upgrade process. And it is surprisingly easy. Please have a look at the [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md) for details, should you chose to upgrade.
 
 
 **2022-06-30** - Well ,well, well, the base Tomcat image never ceases to amaze me! Since the last image re-build the base image has now moved to Ubuntu Jammy (22.04.4 LTS). This came with an unexpected surprise: OpenSSL has been upgraded to 3.0.2. This might seem innocuous, but the build process of Guacamole Server failed, as it relies on deprecated methods. Source code for Guacamole has already been updated on GitHub, but not the downloadable source tarball from the official website.
 
-
 So, the latest tag is now built on the source code available on Github.
 
-
 Oh, and by the way, updated to s6 overlay 3.1.1.2.
-
 
 **2022-06-27** - New tags are available!  The philosophy for tomcat base image (i.e. 9.0.64-jre11) is to switch from openjdk to Temurin, but unfortunately, the build process failed with this base image. 9.0.64-jre11 used to be based on Debian Bullseye, but it is now based on Ubuntu 20.04.4 LTS. So I decided to create new tags:
 
@@ -108,48 +105,33 @@ Oh, and by the way, updated to s6 overlay 3.1.1.2.
 
 Oh, and by the way, updated to s6 overlay 3.1.1.1
 
-
 **2022-06-10** - updated to tomcat 9.0.64 and PostGresJDBC 42.4.0
-
 
 **2022-05-11** - updated to PostgresJDBC 42.3.6
 
-
 **2022-05-12** - updated to tomcat 9.0.63
-
 
 **2022-05-12** - added a new tag: github. This image is built on the github repos for guacamole-server and guacamole-client.
 
-
 **2022-05-11** - updated to PostgresJDBC 42.3.5
-
 
 **2022-04-19** - updated to Tomcat 9.0.62 and PostgresJDBC 42.3.4
 
-
 **2022-03-16** - updated to tomcat 9.0.60, and fixed an issue that prevented the container to start on arm64
-
 
 **2022-03-08** - updated to S6 Overlay 3.1.0.1
 
-
 **2022-03-01** - updated to PostgresJDBC 42.3.3, tomcat 9.0.59, arm64 not supported by tomcat 9.0.59
-
 
 **2022-02-22** - updated to s6 overlay 3.0.0.2-2
 
-
 **2022-02-07** - updated to version Postegres JDBC driver 42.3.2
-
 
 **2022-01-31** - s6 overlay 3.0.0.2 has been released, that corrects a bug in the management of environment variables. Images 1.4.0, 1.4.0-s6_v3 and latest have been updated to this version, as well as updated to Tomcat 9.0.58.
 
-
 **2022-01-29** - I noticed a typo in the Dockerfile that introduced a bug with Postgres JDBC Driver. Fixed in all tags. Issue #2
 
-
 **2022-01-27** - updated to s6 overlay 3.0 and tomcat 9.0.58
-
 
 **2022-01-03** - updated to version 1.4.0
 
@@ -450,7 +432,7 @@ And of course, don't forget to look at the [official documentation](https://guac
 
 ## License
 
-Copyright (C) 2021-2022 abesnier
+Copyright (C) 2021-2023 abesnier
 
 Copyright (C) 2017-2020 oznu
 
