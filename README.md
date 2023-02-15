@@ -1,6 +1,6 @@
 **Guacamole 1.5.0 will soon be released. Test images are being built with Release Candidate 1. The [master branch](https://github.com/abesnier/docker-guacamole/tree/master) will now be used for Guacamole 1.5.0, and the [branch 1.4.0](https://github.com/abesnier/docker-guacamole/tree/1.4.0) will still be maintained for Guacamole 1.4.0**
 
-**If you decide to try the new images, make sure to delete the previous extensions. Go to the config/guacamole/extension directory, and delete the files that contain 1.4.0 in their names. Having multiple versions of the same extension will create issues.**
+**If you decide to try the new images, make sure to delete the previous extensions. Go to the `config/guacamole/extensions` directory, and delete the files that contain 1.4.0 in their names (**`rm *1.4.0*.jar`**). Having multiple versions of the same extension will create issues. You can similarly cean the `extensions-available`.**
 
 **This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.71 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.5.0, and s6_overlay 3.1.**
 
