@@ -146,7 +146,7 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 </details>
 
 # Available tags
-
+**WILL BE UPDATED WHEN 1.5.0 IS OFFICIALLY RELEASED**
 
 `1.4.0` `latest` , version 1.4.0, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
@@ -262,7 +262,9 @@ Currently the available extensions are:
 
 * [1.4.0] [1.5.0] auth-json - [Encrypted JSON Authentication](https://guacamole.apache.org/doc/gug/json-auth.html)
 
+* [1.5.0] history-recording-storage - [In-application playback of recordings](https://guacamole.apache.org/doc/1.5.0/gug/recording-playback.html)
 
+* [1.5.0] vault - [Support for retrieving secrets from key vaults](https://guacamole.apache.org/doc/1.5.0/gug/vault.html)
 
 You should only enable the extensions you require, if an extensions is not configured correctly in the `guacamole.properties` file it may prevent the system from loading. See the [official documentation](https://guacamole.apache.org/doc/gug/) for more details.
 
