@@ -2,7 +2,7 @@
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
-**Every month, inactive images on Docker Hub will be removed. If you use one of those, you'll need to update to a newer image.**  If you need to keep a specific image, please raise an  [Issue](https://github.com/abesnier/docker-guacamole/issues), so I can track it.
+**Every month, inactive images on Docker Hub will be removed. If you use one of those, you'll need to update to a newer image.**  If you need to keep a specific image, please raise an [Issue](https://github.com/abesnier/docker-guacamole/issues), so I can track it.
 
 
 # Summary of images
@@ -13,6 +13,8 @@ Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guaca
 Alpine | N/A | guacamole:alpine
 
 # What's new / Changelog
+**2023-02-15** - I noticed there is a Release Candidate for Guacamole 1.5.0. So I created new images. Let's see how they work. If you try them, and notice something odd, please report the [issue](https://github.com/abesnier/docker-guacamole/issues)!
+
 **2023-02-15** - Well, of course, PostgreSQL JDBC 42.5.3 comes back online juste two days after I regressed the images... Soooo, here they are back, updated with 42.5.3.
 
 **2023-02-13** - PostgreSQL JDBC 42.5.3 is still available for download, but is not visible from the download page, so I'll assume there is a regression, and decided to downgrade to 42.5.2.

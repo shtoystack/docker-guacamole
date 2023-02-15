@@ -95,9 +95,9 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
 # Install guacamole-client and postgres auth adapter
   && set -xe \
   && rm -rf ${CATALINA_HOME}/webapps/ROOT \
-  && curl -SLo ${CATALINA_HOME}/webapps/ROOT.war "${GUAC_DOWN_PATH}/${GUAC_VER}/binary/guacamole-${GUAC_VER}.war" \
+  && curl -SLo ${CATALINA_HOME}/webapps/ROOT.war "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-${GUAC_VER}.war" \
   && curl -SLo ${GUACAMOLE_HOME}/lib/postgresql-${POSTGREJDBC_VER}.jar "https://jdbc.postgresql.org/download/postgresql-${POSTGREJDBC_VER}.jar" \                
-  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER}/binary/guacamole-auth-jdbc-${GUAC_VER}.tar.gz" \
+  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-auth-jdbc-${GUAC_VER}.tar.gz" \
   && tar -xzf guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/guacamole-auth-jdbc-postgresql-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions/ \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/schema ${GUACAMOLE_HOME}/ \
@@ -105,14 +105,14 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
 # Add optional extensions
   && for i in auth-duo auth-quickconnect auth-header auth-ldap auth-json auth-totp; do \         
     echo "${GUAC_DOWN_PATH}/${GUAC_VER}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" \
-    && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" \
+    && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" \
     && tar -xzf guacamole-${i}-${GUAC_VER}.tar.gz \
     && cp guacamole-${i}-${GUAC_VER}/guacamole-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
     && rm -rf guacamole-${i}-${GUAC_VER} guacamole-${i}-${GUAC_VER}.tar.gz \
   ;done \
 # Special case for SSO extension as it bundles CAS, SAML and OpenID in subfolders
 # I keep the for loop, just in case future releases of guacamole bundles other extensions...
-  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER}/binary/guacamole-auth-sso-${GUAC_VER}.tar.gz" \
+  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-auth-sso-${GUAC_VER}.tar.gz" \
   && tar -xzf guacamole-auth-sso-${GUAC_VER}.tar.gz \
   && for i in cas openid saml; do \
     cp guacamole-auth-sso-${GUAC_VER}/${i}/guacamole-auth-sso-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
