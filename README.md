@@ -1,4 +1,4 @@
-**Guacamole 1.5.0 will soon be released. Test images are being built, see details below**
+**Guacamole 1.5.0 will soon be released. Test images are being built with Release Candidate 1. The [master branch](https://github.com/abesnier/docker-guacamole/tree/master)will now be used for Guacamole 1.5.0, and the [branch 1.4.0])https://github.com/abesnier/docker-guacamole/tree/1.4.0) will still be maintained for Guacamole 1.4.0**
 
 **This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.71 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.5.0, and s6_overlay 3.1.**
 
