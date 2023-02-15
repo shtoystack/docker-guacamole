@@ -88,7 +88,7 @@ RUN set -xe && \
     cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/guacamole-auth-jdbc-postgresql-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions/ &&\
     cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/schema ${GUACAMOLE_HOME}/ &&\
     rm -rf guacamole-auth-jdbc-${GUAC_VER} guacamole-auth-jdbc-${GUAC_VER}.tar.gz &&\
-    for i in auth-duo auth-quickconnect auth-header auth-ldap auth-json auth-totp; do \
+    for i in auth-duo auth-quickconnect auth-header auth-ldap auth-json auth-totp history-recording-storage vault; do \
       echo "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-${i}-${GUAC_VER}.tar.gz"  &&\
       curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" &&\
       tar -xzf guacamole-${i}-${GUAC_VER}.tar.gz &&\
@@ -106,7 +106,8 @@ COPY root_alpine /
 
 ENV PATH=/usr/lib/postgresql/${PG_MAJOR}/bin:$PATH \
     GUACAMOLE_HOME=/config/guacamole \
-    GUACD_LOG_LEVEL=info
+    GUACD_LOG_LEVEL=info \
+    S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
 
 WORKDIR /config
 
