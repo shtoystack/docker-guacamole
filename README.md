@@ -1,4 +1,6 @@
-**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.71 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.4.0, and s6_overlay 3.1.**
+**Guacamole 1.5.0 will soon be released. Test images are being built, see details below**
+
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.71 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.5.0, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
@@ -8,9 +10,9 @@
 # Summary of images
 Base OS | PostgreSQL 13 | PostgreSQL 14
 ---|---|---
-Bullseye | guacamole:1.4.0-bullseye | N/A
-Ubuntu | guacamole:1.4.0 <br> guacamole:latest | guacamole:1.4.0-pg14 <br> guacamole:latest-pg14
-Alpine | N/A | guacamole:alpine
+Bullseye | guacamole:1.5.0RC1-bullseye | N/A
+Ubuntu | guacamole:1.5.0RC1 | guacamole:1.5.0RC1-pg14
+Alpine | N/A | guacamole:1.5.0RC1-alpine
 
 # What's new / Changelog
 **2023-02-15** - I noticed there is a Release Candidate for Guacamole 1.5.0. So I created new images. Let's see how they work. If you try them, and notice something odd, please report the [issue](https://github.com/abesnier/docker-guacamole/issues)!
@@ -240,27 +242,25 @@ docker run \
 Currently the available extensions are:
 
 
-* [1.3.0] [1.4.0] auth-ldap - [LDAP Authentication](https://guacamole.apache.org/doc/gug/ldap-auth.html)
+* [1.3.0] [1.4.0] [1.5.0] auth-ldap - [LDAP Authentication](https://guacamole.apache.org/doc/gug/ldap-auth.html)
 
-* [1.3.0] [1.4.0] auth-duo - [Duo two-factor authentication](https://guacamole.apache.org/doc/gug/duo-auth.html)
+* [1.3.0] [1.4.0] [1.5.0] auth-duo - [Duo two-factor authentication](https://guacamole.apache.org/doc/gug/duo-auth.html)
 
-* [1.3.0] [1.4.0] auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
+* [1.3.0] [1.4.0] [1.5.0] auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
 
-* [1.3.0] [1.4.0] auth-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
+* [1.3.0] [1.4.0] [1.5.0] auth-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
 
-* [1.3.0] [1.4.0] auth-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
+* [1.3.0] [1.4.0] [1.5.0] auth-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
 
-* [1.3.0] [1.4.0] auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
+* [1.3.0] [1.4.0] [1.5.0] auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
 
-* [1.3.0] [1.4.0] auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
+* [1.3.0] [1.4.0] [1.5.0] auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
 
-* [1.3.0] [1.4.0] auth-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
+* [1.3.0] [1.4.0] [1.5.0] auth-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
 
-* [1.4.0] auth-sso - SSO Authentication metapackage, contains classes for CAS, OpenID and SAML authentication (see links above)
+* [1.4.0] [1.5.0] auth-sso - SSO Authentication metapackage, contains classes for CAS, OpenID and SAML authentication (see links above)
 
-* [1.4.0] auth-json - [Encrypted JSON Authentication](https://guacamole.apache.org/doc/gug/json-auth.html)
-
-
+* [1.4.0] [1.5.0] auth-json - [Encrypted JSON Authentication](https://guacamole.apache.org/doc/gug/json-auth.html)
 
 
 
