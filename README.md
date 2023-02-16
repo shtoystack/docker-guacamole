@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.0RC1 | guacamole:1.5.0RC1-pg14
 Alpine | N/A | guacamole:1.5.0RC1-alpine
 
 # What's new / Changelog
+**2023-02-16** - Updated to PostgreSQL JDBC 42.5.4
+
 **2023-02-15** - I noticed there is a Release Candidate for Guacamole 1.5.0. So I created new images. Let's see how they work. If you try them, and notice something odd, please report the [issue](https://github.com/abesnier/docker-guacamole/issues)!
 
 **2023-02-15** - Well, of course, PostgreSQL JDBC 42.5.3 comes back online juste two days after I regressed the images... Soooo, here they are back, updated with 42.5.3.
