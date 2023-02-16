@@ -93,7 +93,7 @@ RUN apt-get update && apt-get upgrade -y && \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/schema ${GUACAMOLE_HOME}/ \
   && rm -rf guacamole-auth-jdbc-${GUAC_VER} guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
 # Add optional extensions
-  && for i in auth-duo auth-quickconnect auth-header auth-ldap auth-json auth-totp history-recording-storage vault; do \         
+  && for i in auth-duo auth-quickconnect auth-header auth-ldap auth-json auth-totp history-recording-storage; do \         
     echo "${GUAC_DOWN_PATH}/${GUAC_VER}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" \
     && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" \
     && tar -xzf guacamole-${i}-${GUAC_VER}.tar.gz \
@@ -108,6 +108,14 @@ RUN apt-get update && apt-get upgrade -y && \
     cp guacamole-auth-sso-${GUAC_VER}/${i}/guacamole-auth-sso-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
   ;done \
   && rm -rf guacamole-auth-sso-${GUAC_VER} guacamole-auth-sso-${GUAC_VER}.tar.gz \
+# Special case for Vault extension. Currently supports only ksm, but it seems there are plans for future providers 
+# I keep the for loop, just in case future releases of guacamole bundles other extensions...
+  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-vault-${GUAC_VER}.tar.gz" \
+  && tar -xzf guacamole-vault-${GUAC_VER}.tar.gz \
+  && for i in ksm; do \
+    cp guacamole-vault-${GUAC_VER}/${i}/guacamole-vault-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
+  ;done \
+  && rm -rf guacamole-vault-${GUAC_VER} guacamole-vault-${GUAC_VER}.tar.gz \
 # Clean-up
     && apt-get purge -y binutils curl git make\
     && apt-get autoremove --purge -y \
