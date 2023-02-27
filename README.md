@@ -17,7 +17,7 @@ Ubuntu | guacamole:1.5.0RC1 | guacamole:1.5.0RC1-pg14
 Alpine | N/A | guacamole:1.5.0RC1-alpine
 
 # What's new / Changelog
-**2023-02-27** - Updated to final Guacamole 1.5.0, Tomcat 9.0.72, and S6 Overlay 3.2.4.1.
+**2023-02-27** - Updated to final Guacamole 1.5.0, Tomcat 9.0.72, and S6 Overlay 3.1.4.1.
 
 **2023-02-16** - Updated to PostgreSQL JDBC 42.5.4
 
