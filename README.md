@@ -1,8 +1,8 @@
-**Guacamole 1.5.0 will soon be released. Test images are being built with Release Candidate 1. The [master branch](https://github.com/abesnier/docker-guacamole/tree/master) will now be used for Guacamole 1.5.0, and the [branch 1.4.0](https://github.com/abesnier/docker-guacamole/tree/1.4.0) will still be maintained for Guacamole 1.4.0**
+**Guacamole 1.5.0 has been released. The [master branch](https://github.com/abesnier/docker-guacamole/tree/master) will now be used for Guacamole 1.5.0, and the [branch 1.4.0](https://github.com/abesnier/docker-guacamole/tree/1.4.0) will still be maintained for Guacamole 1.4.0**
 
 **If you decide to try the new images, make sure to delete the previous extensions. Go to the `config/guacamole/extensions` directory, and delete the files that contain 1.4.0 in their names (**`rm *1.4.0*.jar`**). Having multiple versions of the same extension will create issues. You can similarly cean the `extensions-available`.**
 
-**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.71 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.5.0, and s6_overlay 3.1.**
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.72 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.5.0, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
