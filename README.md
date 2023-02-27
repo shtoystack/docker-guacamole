@@ -12,9 +12,9 @@
 # Summary of images
 Base OS | PostgreSQL 13 | PostgreSQL 14
 ---|---|---
-Bullseye | guacamole:1.5.0RC1-bullseye | N/A
-Ubuntu | guacamole:1.5.0RC1 | guacamole:1.5.0RC1-pg14
-Alpine | N/A | guacamole:1.5.0RC1-alpine
+Bullseye | guacamole:1.5.0-bullseye | N/A
+Ubuntu | guacamole:1.5.0 <br> guacamole:latest | guacamole:1.5.0-pg14 <br> guacamole:latest-pg14
+Alpine | N/A | guacamole:1.5.0-alpine
 
 # What's new / Changelog
 **2023-02-27** - Updated to final Guacamole 1.5.0, Tomcat 9.0.72, and S6 Overlay 3.1.4.1.
@@ -152,15 +152,24 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 </details>
 
 # Available tags
-**WILL BE UPDATED WHEN 1.5.0 IS OFFICIALLY RELEASED**
 
-`1.4.0` `latest` , version 1.4.0, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.0` `latest` , version 1.5.0, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.4.0-pg14` `latest-pg14` , version 1.4.0, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.0-pg14` `latest-pg14` , version 1.5.0, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.4.0-bullseye` `latest-bullseye`, version 1.4.0, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.0-bullseye`, version 1.5.0, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`alpine`, version 1.4.0, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
+`1.5.0-alpine`, version 1.5.0, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
+
+
+`1.4.0` , version 1.4.0, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+
+`1.4.0-pg14` , version 1.4.0, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+
+`1.4.0-bullseye`, version 1.4.0, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
+
+`1.4.0-alpine`, version 1.4.0, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
+
 
 ## Stale/unmaintained tags
 
@@ -318,10 +327,7 @@ volumes:
 
 ## Something's not working, what to do?
 
-
-
 ### Underscore character is not displayed in SSH sessions
-
 
 There is a know bug, where, in certain conditions, the underscore character is not displayed properly. This issue appeared since Guacamole 1.3, and still exists in 1.4.
 
@@ -404,6 +410,12 @@ services:
 
 ```
 
+### I have tried a 1.5.0RC1 image, updated to 1.5.0, and the login page still tells me I use version 1.5.0-RC1
+
+Yeah, I know. As Docker still sees a guacamole-brading-1.5.0.jar in the `config/guacamole/extensions` directory, it will not overwrite it with the file in the image.
+
+The solution is simply to remove the jar file in the config directory, and restart the container.
+
 
 ### Back up the config folder and start again
 
@@ -454,7 +466,7 @@ Copyright (C) 2017-2020 oznu
 Apache Guacamole is released under the Apache License version 2.0.
 
 
-Extensions uses thrid-party modules. To consult the licensing for each module, download the extension from https://guacamole.apache.org/releases/1.4.0/, extract it, and check the content of the `bundled` directory.
+Extensions uses thrid-party modules. To consult the licensing for each module, download the extension from https://guacamole.apache.org/releases/1.5.0/, extract it, and check the content of the `bundled` directory.
 
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
