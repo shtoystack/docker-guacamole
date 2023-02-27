@@ -1,6 +1,6 @@
 **Guacamole 1.5.0 has been released. The [master branch](https://github.com/abesnier/docker-guacamole/tree/master) will now be used for Guacamole 1.5.0, and the [branch 1.4.0](https://github.com/abesnier/docker-guacamole/tree/1.4.0) will still be maintained for Guacamole 1.4.0**
 
-**If you decide to try the new images, make sure to delete the previous extensions. Go to the `config/guacamole/extensions` directory, and delete the files that contain 1.4.0 in their names (**`rm *1.4.0*.jar`**). Having multiple versions of the same extension will create issues. You can similarly cean the `extensions-available`.**
+**If you decide to try the new images, make sure to delete the previous extensions. Go to the `config/guacamole/extensions` directory, and delete the files that contain 1.4.0 in their names (**`rm *1.4.0*.jar`**). Having multiple versions of the same extension will create issues. You can similarly clean the `extensions-available`.**
 
 **This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.72 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.5.0, and s6_overlay 3.1.**
 
@@ -23,7 +23,7 @@ Alpine | N/A | guacamole:1.5.0-alpine
 
 **2023-02-15** - I noticed there is a Release Candidate for Guacamole 1.5.0. So I created new images. Let's see how they work. If you try them, and notice something odd, please report the [issue](https://github.com/abesnier/docker-guacamole/issues)!
 
-**2023-02-15** - Well, of course, PostgreSQL JDBC 42.5.3 comes back online juste two days after I regressed the images... Soooo, here they are back, updated with 42.5.3.
+**2023-02-15** - Well, of course, PostgreSQL JDBC 42.5.3 comes back online just two days after I regressed the images... Soooo, here they are back, updated with 42.5.3.
 
 **2023-02-13** - PostgreSQL JDBC 42.5.3 is still available for download, but is not visible from the download page, so I'll assume there is a regression, and decided to downgrade to 42.5.2.
 
@@ -56,7 +56,7 @@ The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your `doc
 
 **2020-10-21** - Created a new image, `alpine`. The idea was to have a smaller image. It is about 40% smaller than the `latest` image.
 
-This image is based on Alpine Edge, and uses PostegreSQL 14 and S6 overlay.
+This image is based on Alpine Edge, and uses PostgreSQL 14 and S6 overlay.
 
 As far as I tested it, it can be used as a replacement for a previous PostgreSQL 14 image (`guacamole:1.4.0-pg14` or `guacamole:latest-pg14`).
 
@@ -119,7 +119,7 @@ Oh, and by the way, updated to s6 overlay 3.1.1.2.
 
 Oh, and by the way, updated to s6 overlay 3.1.1.1
 
-**2022-06-10** - updated to tomcat 9.0.64 and PostGresJDBC 42.4.0
+**2022-06-10** - updated to tomcat 9.0.64 and PostgreSQL JDBC 42.4.0
 
 **2022-05-11** - updated to PostgresJDBC 42.3.6
 
@@ -129,7 +129,7 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 
 **2022-05-11** - updated to PostgresJDBC 42.3.5
 
-**2022-04-19** - updated to Tomcat 9.0.62 and PostgresJDBC 42.3.4
+**2022-04-19** - updated to Tomcat 9.0.62 and PostgreSQL JDBC 42.3.4
 
 **2022-03-16** - updated to tomcat 9.0.60, and fixed an issue that prevented the container to start on arm64
 
@@ -143,7 +143,7 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 
 **2022-01-31** - s6 overlay 3.0.0.2 has been released, that corrects a bug in the management of environment variables. Images 1.4.0, 1.4.0-s6_v3 and latest have been updated to this version, as well as updated to Tomcat 9.0.58.
 
-**2022-01-29** - I noticed a typo in the Dockerfile that introduced a bug with Postgres JDBC Driver. Fixed in all tags. Issue #2
+**2022-01-29** - I noticed a typo in the Dockerfile that introduced a bug with PostgreSQL JDBC Driver. Fixed in all tags. Issue #2
 
 **2022-01-27** - updated to s6 overlay 3.0 and tomcat 9.0.58
 
@@ -329,7 +329,7 @@ volumes:
 
 ### Underscore character is not displayed in SSH sessions
 
-There is a know bug, where, in certain conditions, the underscore character is not displayed properly. This issue appeared since Guacamole 1.3, and still exists in 1.4.
+There is a known bug, where, in certain conditions, the underscore character is not displayed properly. This issue appeared since Guacamole 1.3, and still exists in 1.4.
 
 Based on some investigations, it seems the issue is with the libpango library (text rendering library), that is used by Guacamole. The issue has been known for quite a few years now by the library team, but unfortunately, it does not look like a solution will ever be found, as it really appears to be quite random and difficult to reproduce.
 
@@ -360,7 +360,7 @@ The second solution is easy to implement, but it must be done by the admin. Go t
 
 ### The container fails to start properly
 
-If the docker seems to not start properly, check the logs with `docker logs <container_name>`. It may be usefull to start the container with a higher debug verbosity, by using the GUACD_LOG_LEVEL environment variable. The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your docker run command, or in the environment section of your `docker-compose.yml` file. The log will be more verbose, and will help you pinpoint the errors.
+If the docker seems to not start properly, check the logs with `docker logs <container_name>`. It may be useful to start the container with a higher debug verbosity, by using the GUACD_LOG_LEVEL environment variable. The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your docker run command, or in the environment section of your `docker-compose.yml` file. The log will be more verbose, and will help you pinpoint the errors.
 
 
 If you see lines like this one: `postgres: could not access the server configuration file "/config/postgres/postgresql.conf": No such file or directory`, this means that the configuration volume could not be mounted properly. 
