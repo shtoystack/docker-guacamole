@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.0 <br> guacamole:latest | guacamole:1.5.0-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.0-alpine
 
 # What's new / Changelog
+**2023-03-07** - Added a paragraph in the [Something's not working](https://github.com/abesnier/docker-guacamole#somethings-not-working-what-to-do) section, to explain how to use the new history recording extension. Thank you [lfac76](https://github.com/abesnier/docker-guacamole/issues/11) for the suggestion. 
+
 **2023-03-06** - Updated to Tomcat 9.0.73
 
 **2023-02-27** - Updated to final Guacamole 1.5.0, Tomcat 9.0.72, and S6 Overlay 3.1.4.1.
@@ -328,6 +330,29 @@ volumes:
 
 
 ## Something's not working, what to do?
+
+### I can't find the session recordings in the History panel
+
+One of the shiny new extensions shipped with version 1.5.0 is the [History Recording viewer](https://guacamole.apache.org/doc/1.5.0/gug/recording-playback.html) inside Guacamole itself.
+
+But there are some steps required to make it work properly.
+
+First, create a folder that will store the recordings and that must be accessible to Docker. The easiest is to use a sub-folder from the config directory you need to use to start the container. `config/guacamole/recordings` looks like a good option.
+
+Then, you will need to amend the `guacamole.properties` file to override Guacamole's default behaviour. Add the following line: `recording-search-path: /config/guacamole/recordings`
+
+Amend your docker-compose.yml, or your docker run command, to add the history-recording-storage extension (`EXTENSIONS=auth-ldap,auth-duo, history-recording-storage` for example).
+
+Restart the container to load the changes. make sure the extension has been copied in the `/config/guacamole/extensions` directory. If not, I messed something up in the image, and I'll let you report an issue!
+
+Now, you can setup the recording as per the Guacamole manual, and when a connection that has recording enabled is closed, you should be able to see in the recordings directory, and see the "View >" link in the History tab:
+
+![historylog](https://user-images.githubusercontent.com/19927690/223395605-639a9938-ac05-4ab0-87cf-a9ef4f299310.PNG)
+
+Recordings can be found in  your Guacamole server:
+
+![recordings](https://user-images.githubusercontent.com/19927690/223395285-a8aef74d-00e2-4f3d-af15-92415a101557.png)
+
 
 ### Underscore character is not displayed in SSH sessions
 
