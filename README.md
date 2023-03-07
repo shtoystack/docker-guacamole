@@ -345,7 +345,7 @@ Amend your docker-compose.yml, or your docker run command, to add the history-re
 
 Restart the container to load the changes. make sure the extension has been copied in the `/config/guacamole/extensions` directory. If not, I messed something up in the image, and I'll let you report an issue!
 
-Now, you can setup the recording as per the Guacamole manual, and when a connection that has recording enabled is closed, you should be able to see in the recordings directory, and see the "View >" link in the History tab:
+Now, you can setup the [session recording as per the Guacamole manual](https://guacamole.apache.org/doc/1.5.0/gug/recording-playback.html#configuring-connections-to-use-recording-storage), and when a connection that has recording enabled is closed, you should be able to see in the recordings directory, and see the "View >" link in the History tab:
 
 ![historylog](https://user-images.githubusercontent.com/19927690/223395605-639a9938-ac05-4ab0-87cf-a9ef4f299310.PNG)
 
