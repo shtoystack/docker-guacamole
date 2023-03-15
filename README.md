@@ -314,19 +314,15 @@ services:
 
     volumes:
 
-      - postgres:/config
+      - /local_path_config_directory:/config
 
     ports:
 
       - 8080:8080
 
-volumes:
-
-  postgres:
-
-    driver: local
-
 ```
+
+See [docker-compose.yml](https://github.com/abesnier/docker-guacamole/blob/master/docker-compose.yml) for more details
 
 
 ## Something's not working, what to do?
