@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.0 <br> guacamole:latest | guacamole:1.5.0-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.0-alpine
 
 # What's new / Changelog
+**2023-03-19** - Updated to PostgreSQL JDBC 42.6.0
+
 **2023-03-07** - Added a paragraph in the [Something's not working](https://github.com/abesnier/docker-guacamole#somethings-not-working-what-to-do) section, to explain how to use the new history recording extension. Thank you [lfac76](https://github.com/abesnier/docker-guacamole/issues/11) for the suggestion. 
 
 **2023-03-06** - Updated to Tomcat 9.0.73
