@@ -2,7 +2,7 @@
 prepgit
 buildx*
 update*
-Dockerfile.test
+Dockerfile*test
 Dockerfile.ubuntu.libssh
 root_pg14_test
 *.war

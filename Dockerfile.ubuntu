@@ -150,6 +150,7 @@ COPY ./guacamole-branding-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available
 ENV PATH=/usr/lib/postgresql/${PG_MAJOR}/bin:$PATH
 ENV GUACAMOLE_HOME=/config/guacamole
 ENV GUACD_LOG_LEVEL=info
+ENV S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
 
 COPY root /
 
