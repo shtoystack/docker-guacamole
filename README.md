@@ -27,11 +27,11 @@ Alpine | N/A | guacamole:1.5.1-alpine
 
 **2023-03-06** - Updated to Tomcat 9.0.73
 
-**2023-02-27** - Updated to final Guacamole 1.5.0, Tomcat 9.0.72, and S6 Overlay 3.1.4.1.
+**2023-02-27** - Updated to final Guacamole 1.5.1, Tomcat 9.0.72, and S6 Overlay 3.1.4.1.
 
 **2023-02-16** - Updated to PostgreSQL JDBC 42.5.4
 
-**2023-02-15** - I noticed there is a Release Candidate for Guacamole 1.5.0. So I created new images. Let's see how they work. If you try them, and notice something odd, please report the [issue](https://github.com/abesnier/docker-guacamole/issues)!
+**2023-02-15** - I noticed there is a Release Candidate for Guacamole 1.5.1. So I created new images. Let's see how they work. If you try them, and notice something odd, please report the [issue](https://github.com/abesnier/docker-guacamole/issues)!
 
 **2023-02-15** - Well, of course, PostgreSQL JDBC 42.5.3 comes back online just two days after I regressed the images... Soooo, here they are back, updated with 42.5.3.
 
@@ -163,13 +163,13 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 
 # Available tags
 
-`1.5.0` `latest` , version 1.5.0, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.1` `latest` , version 1.5.1, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.0-pg14` `latest-pg14` , version 1.5.0, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.1-pg14` `latest-pg14` , version 1.5.1, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.0-bullseye`, version 1.5.0, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.1-bullseye`, version 1.5.1, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.0-alpine`, version 1.5.0, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
+`1.5.1-alpine`, version 1.5.1, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
 
 
 `1.4.0` , version 1.4.0, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
@@ -267,29 +267,29 @@ docker run \
 Currently the available extensions are:
 
 
-* [1.3.0] [1.4.0] [1.5.0] auth-ldap - [LDAP Authentication](https://guacamole.apache.org/doc/gug/ldap-auth.html)
+* [1.3.0] [1.4.0] [1.5.1] auth-ldap - [LDAP Authentication](https://guacamole.apache.org/doc/gug/ldap-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.0] auth-duo - [Duo two-factor authentication](https://guacamole.apache.org/doc/gug/duo-auth.html)
+* [1.3.0] [1.4.0] [1.5.1] auth-duo - [Duo two-factor authentication](https://guacamole.apache.org/doc/gug/duo-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.0] auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
+* [1.3.0] [1.4.0] [1.5.1] auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.0] auth-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
+* [1.3.0] [1.4.0] [1.5.1] auth-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.0] auth-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
+* [1.3.0] [1.4.0] [1.5.1] auth-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.0] auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
+* [1.3.0] [1.4.0] [1.5.1] auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.0] auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
+* [1.3.0] [1.4.0] [1.5.1] auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
 
-* [1.3.0] [1.4.0] [1.5.0] auth-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
+* [1.3.0] [1.4.0] [1.5.1] auth-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
 
-* [1.4.0] [1.5.0] auth-sso - SSO Authentication metapackage, contains classes for CAS, OpenID and SAML authentication (see links above)
+* [1.4.0] [1.5.1] auth-sso - SSO Authentication metapackage, contains classes for CAS, OpenID and SAML authentication (see links above)
 
-* [1.4.0] [1.5.0] auth-json - [Encrypted JSON Authentication](https://guacamole.apache.org/doc/gug/json-auth.html)
+* [1.4.0] [1.5.1] auth-json - [Encrypted JSON Authentication](https://guacamole.apache.org/doc/gug/json-auth.html)
 
-* [1.5.0] history-recording-storage - [In-application playback of recordings](https://guacamole.apache.org/doc/1.5.0/gug/recording-playback.html)
+* [1.5.1] history-recording-storage - [In-application playback of recordings](https://guacamole.apache.org/doc/1.5.1/gug/recording-playback.html)
 
-* [1.5.0] vault - [Support for retrieving secrets from key vaults](https://guacamole.apache.org/doc/1.5.0/gug/vault.html)
+* [1.5.1] vault - [Support for retrieving secrets from key vaults](https://guacamole.apache.org/doc/1.5.1/gug/vault.html)
 
 You should only enable the extensions you require, if an extensions is not configured correctly in the `guacamole.properties` file it may prevent the system from loading. See the [official documentation](https://guacamole.apache.org/doc/gug/) for more details.
 
@@ -335,7 +335,7 @@ See [docker-compose.yml](https://github.com/abesnier/docker-guacamole/blob/maste
 
 ### I can't find the session recordings in the History panel
 
-One of the shiny new extensions shipped with version 1.5.0 is the [History Recording viewer](https://guacamole.apache.org/doc/1.5.0/gug/recording-playback.html) inside Guacamole itself.
+One of the shiny new extensions shipped with version 1.5.1 is the [History Recording viewer](https://guacamole.apache.org/doc/1.5.1/gug/recording-playback.html) inside Guacamole itself.
 
 But there are some steps required to make it work properly.
 
@@ -347,7 +347,7 @@ Amend your docker-compose.yml, or your docker run command, to add the history-re
 
 Restart the container to load the changes. make sure the extension has been copied in the `/config/guacamole/extensions` directory. If not, I messed something up in the image, and I'll let you report an issue!
 
-Now, you can setup the [session recording as per the Guacamole manual](https://guacamole.apache.org/doc/1.5.0/gug/recording-playback.html#configuring-connections-to-use-recording-storage), and when a connection that has recording enabled is closed, you should be able to see in the recordings directory, and see the "View >" link in the History tab:
+Now, you can setup the [session recording as per the Guacamole manual](https://guacamole.apache.org/doc/1.5.1/gug/recording-playback.html#configuring-connections-to-use-recording-storage), and when a connection that has recording enabled is closed, you should be able to see in the recordings directory, and see the "View >" link in the History tab:
 
 ![historylog](https://user-images.githubusercontent.com/19927690/223395605-639a9938-ac05-4ab0-87cf-a9ef4f299310.PNG)
 
@@ -439,9 +439,9 @@ services:
 
 ```
 
-### I have tried a 1.5.0RC1 image, updated to 1.5.0, and the login page still tells me I use version 1.5.0-RC1
+### I have tried a 1.5.1RC1 image, updated to 1.5.1, and the login page still tells me I use version 1.5.1-RC1
 
-Yeah, I know. As Docker still sees a guacamole-brading-1.5.0.jar in the `config/guacamole/extensions` directory, it will not overwrite it with the file in the image.
+Yeah, I know. As Docker still sees a guacamole-brading-1.5.1.jar in the `config/guacamole/extensions` directory, it will not overwrite it with the file in the image.
 
 The solution is simply to remove the jar file in the config directory, and restart the container.
 
@@ -495,7 +495,7 @@ Copyright (C) 2017-2020 oznu
 Apache Guacamole is released under the Apache License version 2.0.
 
 
-Extensions uses thrid-party modules. To consult the licensing for each module, download the extension from https://guacamole.apache.org/releases/1.5.0/, extract it, and check the content of the `bundled` directory.
+Extensions uses thrid-party modules. To consult the licensing for each module, download the extension from https://guacamole.apache.org/releases/1.5.1/, extract it, and check the content of the `bundled` directory.
 
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
