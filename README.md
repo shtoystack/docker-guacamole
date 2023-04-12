@@ -25,13 +25,16 @@ Alpine | N/A | guacamole:1.5.1-alpine
 
 **2023-03-07** - Added a paragraph in the [Something's not working](https://github.com/abesnier/docker-guacamole#somethings-not-working-what-to-do) section, to explain how to use the new history recording extension. Thank you [lfac76](https://github.com/abesnier/docker-guacamole/issues/11) for the suggestion. 
 
+<details>
+<summary>Older changelog entries</summary>
+
 **2023-03-06** - Updated to Tomcat 9.0.73
 
-**2023-02-27** - Updated to final Guacamole 1.5.1, Tomcat 9.0.72, and S6 Overlay 3.1.4.1.
+**2023-02-27** - Updated to final Guacamole 1.5.0, Tomcat 9.0.72, and S6 Overlay 3.1.4.1.
 
 **2023-02-16** - Updated to PostgreSQL JDBC 42.5.4
 
-**2023-02-15** - I noticed there is a Release Candidate for Guacamole 1.5.1. So I created new images. Let's see how they work. If you try them, and notice something odd, please report the [issue](https://github.com/abesnier/docker-guacamole/issues)!
+**2023-02-15** - I noticed there is a Release Candidate for Guacamole 1.5.0. So I created new images. Let's see how they work. If you try them, and notice something odd, please report the [issue](https://github.com/abesnier/docker-guacamole/issues)!
 
 **2023-02-15** - Well, of course, PostgreSQL JDBC 42.5.3 comes back online just two days after I regressed the images... Soooo, here they are back, updated with 42.5.3.
 
@@ -52,9 +55,6 @@ Images are now built with the `--provenance=false` flag, to mitigate issue with 
 The value is set by default to `info`. The valid values are `error`, `warn`, `info`, `debug` and `trace`. See the [Official documentation](https://guacamole.apache.org/doc/gug/configuring-guacamole.html?logging-within-the-web-application#logging-within-the-web-application) for more details.
 
 The variable can be set either by adding `-e GUACD_LOG_LEVEL=debug` to your `docker run` command, or in the environment section of your `docker-compose.yml` file. 
-
-<details>
-<summary>Older changelog entries</summary>
 
 **2022-12-08** - Updated to Tomcat 9.0.70
 
