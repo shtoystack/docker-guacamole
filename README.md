@@ -17,7 +17,7 @@ Ubuntu | guacamole:1.5.1 <br> guacamole:latest | guacamole:1.5.1-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.1-alpine
 
 # What's new / Changelog
-**2023-04-11** - Updated to Guacamole 1.5.1
+**2023-04-11** - Updated to Guacamole 1.5.1. This is a bugfix release that addresses regressions noted in the 1.5.0 release. For a full list of all changes in this release, please see the [changelog](https://guacamole.apache.org/releases/1.5.1/#changelog).
 
 **2023-04-02** - Updated to S6 Overlay 3.1.4.2.
 
