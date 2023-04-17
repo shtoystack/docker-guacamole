@@ -1,4 +1,4 @@
-**Guacamole 1.5.1 will soon be released. The [master branch](https://github.com/abesnier/docker-guacamole/tree/master) will now be used for Guacamole 1.5.1, and the [branch 1.4.0](https://github.com/abesnier/docker-guacamole/tree/1.4.0) will still be maintained for Guacamole 1.4.0 for a few months, but will gradually be retired.**
+**Guacamole 1.5.1 has been released. The [master branch](https://github.com/abesnier/docker-guacamole/tree/master) will now be used for Guacamole 1.5.1, and the [branch 1.4.0](https://github.com/abesnier/docker-guacamole/tree/1.4.0) will still be maintained for Guacamole 1.4.0 for a few months, but will gradually be retired.**
 
 **If you decide to try the new images, make sure to delete the previous extensions. Go to the `config/guacamole/extensions` directory, and delete the files that contain 1.4.0 in their names (**`rm *1.4.0*.jar`**). Having multiple versions of the same extension will create issues. You can similarly clean the `extensions-available`.**
 
@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.1 <br> guacamole:latest | guacamole:1.5.1-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.1-alpine
 
 # What's new / Changelog
+**2023-04-17** - Updated to Guacamole 1.5.1 Release. The previous build was done with 1.5.1 Release Candidtate only. Make sure to purege older extensions (1.4.0, 1.5.0, etc.. from the /config/guacamole/extensions and extensions-available directories before restarting the container.
+
 **2023-04-11** - Updated to Guacamole 1.5.1. This is a bugfix release that addresses regressions noted in the 1.5.0 release. For a full list of all changes in this release, please see the [changelog](https://guacamole.apache.org/releases/1.5.1/#changelog).
 
 **2023-04-02** - Updated to S6 Overlay 3.1.4.2.
