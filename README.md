@@ -10,14 +10,14 @@
 
 
 # Summary of images
-Base OS | PostgreSQL 13 | PostgreSQL 14
----|---|---
-Bullseye | guacamole:1.5.1-bullseye | N/A
-Ubuntu | guacamole:1.5.1 <br> guacamole:latest | guacamole:1.5.1-pg14 <br> guacamole:latest-pg14
-Alpine | N/A | guacamole:1.5.1-alpine
+Base OS | PostgreSQL 13 | PostgreSQL 14 | PostgreSQL 15
+---|---|---|---
+Bullseye | guacamole:1.5.1-bullseye | N/A | N/A
+Ubuntu | guacamole:1.5.1 <br> guacamole:latest | guacamole:1.5.1-pg14 <br> guacamole:latest-pg14 | guacamole:1.5.1-pg15 <br> guacamole:latest-pg15
+Alpine | N/A | guacamole:1.5.1-alpine | guacamole:1.5.1-alpine-pg15
 
 # What's new / Changelog
-**2023-05-24** - Updated to Tomcat 9.0.75, S6 Overlay 3.1.5.0
+**2023-05-24** - Updated to Tomcat 9.0.75, S6 Overlay 3.1.5.0. Also added images that use PostgreSQL 15 (with Ubuntu and Alpine bases). Be careful! These images cannot be used as in-place replacement for another version of PostgreSQL, you need to follow [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md) (and backup and double backup!)
 
 **2023-04-17** - Updated to Guacamole 1.5.1 Release. The previous build was done with 1.5.1 Release Candidtate only. Make sure to purege older extensions (1.4.0, 1.5.0, etc.. from the /config/guacamole/extensions and extensions-available directories before restarting the container.
 
