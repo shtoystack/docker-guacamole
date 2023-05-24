@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.1 <br> guacamole:latest | guacamole:1.5.1-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.1-alpine
 
 # What's new / Changelog
+**2023-05-24** - Updated to Tomcat 9.0.75, S6 Overlay 3.1.5.0
+
 **2023-04-17** - Updated to Guacamole 1.5.1 Release. The previous build was done with 1.5.1 Release Candidtate only. Make sure to purege older extensions (1.4.0, 1.5.0, etc.. from the /config/guacamole/extensions and extensions-available directories before restarting the container.
 
 **2023-04-11** - Updated to Guacamole 1.5.1. This is a bugfix release that addresses regressions noted in the 1.5.0 release. For a full list of all changes in this release, please see the [changelog](https://guacamole.apache.org/releases/1.5.1/#changelog).
