@@ -1,8 +1,8 @@
-**Guacamole 1.5.1 has been released. The [master branch](https://github.com/abesnier/docker-guacamole/tree/master) will now be used for Guacamole 1.5.1, and the [branch 1.4.0](https://github.com/abesnier/docker-guacamole/tree/1.4.0) will still be maintained for Guacamole 1.4.0 for a few months, but will gradually be retired.**
+**Guacamole 1.5.2 has been released. The [master branch](https://github.com/abesnier/docker-guacamole/tree/master) will now be used for Guacamole 1.5.2, and the [branch 1.4.0](https://github.com/abesnier/docker-guacamole/tree/1.4.0) will still be maintained for Guacamole 1.4.0 for a few months, but will gradually be retired.**
 
 **If you decide to try the new images, make sure to delete the previous extensions. Go to the `config/guacamole/extensions` directory, and delete the files that contain 1.4.0 in their names (**`rm *1.4.0*.jar`**). Having multiple versions of the same extension will create issues. You can similarly clean the `extensions-available`.**
 
-**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.72 (guacamole is not compatible with tomcat10), postgresql 14, guacamole 1.5.1, and s6_overlay 3.1.**
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.75 (guacamole is not compatible with tomcat10), postgresql 13/14/15 (see below), guacamole 1.5.2, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
@@ -12,11 +12,13 @@
 # Summary of images
 Base OS | PostgreSQL 13 | PostgreSQL 14 | PostgreSQL 15
 ---|---|---|---
-Bullseye | guacamole:1.5.1-bullseye | N/A | N/A
-Ubuntu | guacamole:1.5.1 <br> guacamole:latest | guacamole:1.5.1-pg14 <br> guacamole:latest-pg14 | guacamole:1.5.1-pg15 <br> guacamole:latest-pg15
-Alpine | N/A | guacamole:1.5.1-alpine | guacamole:1.5.1-alpine-pg15
+Bullseye | guacamole:1.5.2-bullseye | N/A | N/A
+Ubuntu | guacamole:1.5.2 <br> guacamole:latest | guacamole:1.5.2-pg14 <br> guacamole:latest-pg14 | guacamole:1.5.2-pg15 <br> guacamole:latest-pg15
+Alpine | N/A | guacamole:1.5.2-alpine | guacamole:1.5.2-alpine-pg15
 
 # What's new / Changelog
+**2023-05-31** - Updated to Guacamole 1.5.2
+
 **2023-05-24** - Updated to Tomcat 9.0.75, S6 Overlay 3.1.5.0. Also added images that use PostgreSQL 15 (with Ubuntu and Alpine bases). Be careful! These images cannot be used as in-place replacement for another version of PostgreSQL, you need to follow [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md) (and backup and double backup!)
 
 **2023-04-17** - Updated to Guacamole 1.5.1 Release. The previous build was done with 1.5.1 Release Candidtate only. Make sure to purege older extensions (1.4.0, 1.5.0, etc.. from the /config/guacamole/extensions and extensions-available directories before restarting the container.
@@ -167,13 +169,17 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 
 # Available tags
 
-`1.5.1` `latest` , version 1.5.1, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.2` `latest` , version 1.5.2, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.1-pg14` `latest-pg14` , version 1.5.1, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.2-pg14` `latest-pg14` , version 1.5.2, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.1-bullseye`, version 1.5.1, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.2-pg15` `latest-pg15` , version 1.5.2, uses PostgreSQL 15, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.1-alpine`, version 1.5.1, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
+`1.5.2-bullseye`, version 1.5.2, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
+
+`1.5.2-alpine`, version 1.5.2, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
+
+`1.5.2-alpine-pg15`, version 1.5.2, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
 
 
 `1.4.0` , version 1.4.0, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
