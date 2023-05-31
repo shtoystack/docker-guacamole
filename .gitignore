@@ -2,7 +2,9 @@
 prepgit
 buildx*
 update*
-Dockerfile*test
+docker-compose-build.yml
+docker-bake.hcl
+Dockerfile*test*
 Dockerfile.ubuntu.libssh
 root_pg14_test
 *.war
