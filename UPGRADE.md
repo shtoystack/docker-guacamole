@@ -44,6 +44,9 @@ Well, a little. I can confirm these are the steps I followed for my use case, an
 
 Postgresql documentation will recommend to use pg_dumpall or pg_upgrade, but none worked for me. So I reverted to the backup solution I already wrote in the [README](https://github.com/abesnier/docker-guacamole/tree/eb34d1dc10c63cc6f55eb146504ae8d4c235ad9a#back-up-the-config-folder-and-start-again), and it worked.
 
+## This works, but MFA is broken
+I am not sure if this an issue with the upgrade process, or something else, but the solution is [here](https://github.com/abesnier/docker-guacamole/blob/master/README.md#somethings-not-working-what-to-do).
+
 ## "You're a moron and your steps did not work me"
 
 Please raise an [issue](https://github.com/abesnier/docker-guacamole/issues), I will look at it and help you as much as possible.

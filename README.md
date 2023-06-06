@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.2 <br> guacamole:latest | guacamole:1.5.2-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.2-alpine | guacamole:1.5.2-alpine-pg15
 
 # What's new / Changelog
+**2023-06-06** - FIX: Extensions were not properly cleaned between Guacamole versions bumps. This could create issues for example with multi-factor authentication. CAVEAT: if you use custom extensions, please make sure they contain the correct Guacamole version in their name (which was already the case to be honest). Thanks q20 for reporting the [issue](https://github.com/abesnier/docker-guacamole/issues/16).
+
 **2023-05-31** - Updated to Guacamole 1.5.2
 
 **2023-05-24** - Updated to Tomcat 9.0.75, S6 Overlay 3.1.5.0. Also added images that use PostgreSQL 15 (with Ubuntu and Alpine bases). Be careful! These images cannot be used as in-place replacement for another version of PostgreSQL, you need to follow [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md) (and backup and double backup!)
@@ -277,29 +279,29 @@ docker run \
 Currently the available extensions are:
 
 
-* [1.3.0] [1.4.0] [1.5.1] auth-ldap - [LDAP Authentication](https://guacamole.apache.org/doc/gug/ldap-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-ldap - [LDAP Authentication](https://guacamole.apache.org/doc/gug/ldap-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.1] auth-duo - [Duo two-factor authentication](https://guacamole.apache.org/doc/gug/duo-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-duo - [Duo two-factor authentication](https://guacamole.apache.org/doc/gug/duo-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.1] auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.1] auth-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.1] auth-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.1] auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.1] auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
 
-* [1.3.0] [1.4.0] [1.5.1] auth-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
 
-* [1.4.0] [1.5.1] auth-sso - SSO Authentication metapackage, contains classes for CAS, OpenID and SAML authentication (see links above)
+* [1.4.0] [1.5.2] auth-sso - SSO Authentication metapackage, contains classes for CAS, OpenID and SAML authentication (see links above)
 
-* [1.4.0] [1.5.1] auth-json - [Encrypted JSON Authentication](https://guacamole.apache.org/doc/gug/json-auth.html)
+* [1.4.0] [1.5.2] auth-json - [Encrypted JSON Authentication](https://guacamole.apache.org/doc/gug/json-auth.html)
 
-* [1.5.1] history-recording-storage - [In-application playback of recordings](https://guacamole.apache.org/doc/1.5.1/gug/recording-playback.html)
+* [1.5.2] history-recording-storage - [In-application playback of recordings](https://guacamole.apache.org/doc/1.5.1/gug/recording-playback.html)
 
-* [1.5.1] vault - [Support for retrieving secrets from key vaults](https://guacamole.apache.org/doc/1.5.1/gug/vault.html)
+* [1.5.2] vault - [Support for retrieving secrets from key vaults](https://guacamole.apache.org/doc/1.5.1/gug/vault.html)
 
 You should only enable the extensions you require, if an extensions is not configured correctly in the `guacamole.properties` file it may prevent the system from loading. See the [official documentation](https://guacamole.apache.org/doc/gug/) for more details.
 
@@ -342,6 +344,23 @@ See [docker-compose.yml](https://github.com/abesnier/docker-guacamole/blob/maste
 
 
 ## Something's not working, what to do?
+
+### I upgraded to a newer version of Guacamole and/or PostegreSQL, and 2FA Authentication does not work anymore.
+It is possible that after some upgrades, either in the Guacamole version, or to a newer PostgreSQL version (13 to 14 or 15, after you carefully follow the [instructions here](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md) for example), you are faced with an error mzessage after entering your TOTP token. Guacamole will display the message "Verification failed. Please try again.".
+
+There are multiple causes to this issues I believe.
+
+The first one was a slight oversight from my part during start-up of the container, and you are left with multiple versions of some extensions. Go to your /config/guacamole/extensions, and delete all extensions that do not contain the correct Guacamole version (1.5.2 at the time of writing this). This issue is now fixed, and extensions should be properly cleaned when the container starts again. So restart the container, and that should be it.
+
+If cleaning does not solve the issue, then you will have to reset the TOTP secret for at least one admin user. This can be done in a one-liner:
+`docker exec -it guacamole bash -c "psql -U guacamole guacamole_db -c \"UPDATE guacamole_user_attribute SET attribute_value='false' WHERE attribute_name = 'guac-totp-key-confirmed' and user_id = (SELECT user_id FROM guacamole_user INNER JOIN guacamole_entity ON guacamole_entity.entity_id = guacamole_user.entity_id WHERE guacamole_entity.name = 'your username');\""`
+
+Once executed, try to login with the user name you specified, and you will be prompted to register your MFA again: 
+
+![MFA Enrollment](https://guacamole.apache.org/doc/gug/_images/totp-enroll.png "MFA Enrollment prompt")
+
+When your admin user has recovered access, he can go tio the admin panel and reset TOTP secret for other users. This will force users to re-enroll. See [documentation here](https://guacamole.apache.org/doc/gug/totp-auth.html#reseting-totp-data).
+
 
 ### I can't find the session recordings in the History panel
 
@@ -483,7 +502,7 @@ To restore the database, copy the backup file in your mounted config folder, and
 
 ### Report an issue with the image
 
-Have a look at the [Github repo](https://github.com/abesnier/docker-guacamole), and the [Issues](https://github.com/abesnier/docker-guacamole/issues)page.
+Have a look at the [Github repo](https://github.com/abesnier/docker-guacamole), and the [Issues](https://github.com/abesnier/docker-guacamole/issues) page.
 
 
 ### Official support pages

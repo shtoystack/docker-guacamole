@@ -1,9 +1,19 @@
 #!/usr/bin/with-contenv sh
 
+# this one should work better and is a one liner. However, all extensions must contain the correct guacamole version in their name
+ls -1 ${GUACAMOLE_HOME}/extensions | grep -v ${GUAC_VER} | xargs rm -f
+
+# this creates an issue with auth-jdbc, that is a mandatory extension, does not exist in extensions-available, and is not removed when version is bumped
 # clean up extensions
-for i in auth-duo auth-header auth-json auth-ldap auth-quickconnect auth-sso-cas auth-sso-openid auth-sso-saml auth-totp branding history-recording vault-ksm; do
-  rm -rf ${GUACAMOLE_HOME}/extensions/guacamole-${i}-*.jar
-done
+# for i in auth-ldap auth-duo auth-header auth-cas auth-openid auth-quickconnect auth-totp auth-saml auth-json branding; do
+#  rm -rf ${GUACAMOLE_HOME}/extensions/guacamole-${i}-${GUAC_VER}.jar
+#done
+
+# this was from Oznu's image
+# if the guacamole version was bumped, delete the contents of the extensions directory - just on the first run 
+#if [ "$(cat /config/.database-version)" != "$GUAC_VER" ]; then
+#  rm -rf ${GUACAMOLE_HOME}/extensions/*
+#fi
 
 # enable extensions
 for i in $(echo "$EXTENSIONS" | tr "," " "); do
