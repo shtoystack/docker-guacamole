@@ -23,6 +23,9 @@ Alpine | N/A | guacamole:1.5.2-alpine | guacamole:1.5.2-alpine-pg15
 
 **2023-05-31** - Updated to Guacamole 1.5.2
 
+<details>
+<summary>Older changelog entries</summary>
+
 **2023-05-24** - Updated to Tomcat 9.0.75, S6 Overlay 3.1.5.0. Also added images that use PostgreSQL 15 (with Ubuntu and Alpine bases). Be careful! These images cannot be used as in-place replacement for another version of PostgreSQL, you need to follow [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md) (and backup and double backup!)
 
 **2023-04-17** - Updated to Guacamole 1.5.1 Release. The previous build was done with 1.5.1 Release Candidtate only. Make sure to purege older extensions (1.4.0, 1.5.0, etc.. from the /config/guacamole/extensions and extensions-available directories before restarting the container.
@@ -34,9 +37,6 @@ Alpine | N/A | guacamole:1.5.2-alpine | guacamole:1.5.2-alpine-pg15
 **2023-03-19** - Updated to PostgreSQL JDBC 42.6.0
 
 **2023-03-07** - Added a paragraph in the [Something's not working](https://github.com/abesnier/docker-guacamole#somethings-not-working-what-to-do) section, to explain how to use the new history recording extension. Thank you [lfac76](https://github.com/abesnier/docker-guacamole/issues/11) for the suggestion. 
-
-<details>
-<summary>Older changelog entries</summary>
 
 **2023-03-06** - Updated to Tomcat 9.0.73
 
