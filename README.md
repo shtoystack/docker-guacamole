@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.2 <br> guacamole:latest | guacamole:1.5.2-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.2-alpine | guacamole:1.5.2-alpine-pg15
 
 # What's new / Changelog
+**2023-06-07** - :warning: It seems that Guacamole 1.5.2 [can segfault on some RDP connections](https://lists.apache.org/thread/ws7xykpm2cmnz2w42y9qy8kkn6hdpr0x). If you encounter that bug, please hold on for a bit until the Guacamole Team fixes it (and that will probably not take long).
+
 **2023-06-06** - FIX: Extensions were not properly cleaned between Guacamole versions bumps. This could create issues for example with multi-factor authentication. CAVEAT: if you use custom extensions, please make sure they contain the correct Guacamole version in their name (which was already the case to be honest). Thanks q20 for reporting the [issue](https://github.com/abesnier/docker-guacamole/issues/16).
 
 **2023-05-31** - Updated to Guacamole 1.5.2
