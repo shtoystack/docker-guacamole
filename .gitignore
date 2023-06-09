@@ -8,3 +8,6 @@ Dockerfile*test*
 Dockerfile.ubuntu.libssh
 root_pg14_test
 *.war
+guacamole-branding-1.5.0.jar
+guacamole-branding-1.5.1.jar
+
