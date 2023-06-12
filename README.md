@@ -289,15 +289,15 @@ Currently the available extensions are:
 
 * [1.3.0] [1.4.0] [1.5.2] auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.2] auth-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-sso-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.2] auth-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-sso-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
 
 * [1.3.0] [1.4.0] [1.5.2] auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
 
 * [1.3.0] [1.4.0] [1.5.2] auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
 
-* [1.3.0] [1.4.0] [1.5.2] auth-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
+* [1.3.0] [1.4.0] [1.5.2] auth-sso-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
 
 * [1.4.0] [1.5.2] auth-sso - SSO Authentication metapackage, contains classes for CAS, OpenID and SAML authentication (see links above)
 
