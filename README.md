@@ -2,7 +2,7 @@
 
 **If you decide to try the new images, make sure to delete the previous extensions. Go to the `config/guacamole/extensions` directory, and delete the files that contain 1.4.0 in their names (**`rm *1.4.0*.jar`**). Having multiple versions of the same extension will create issues. You can similarly clean the `extensions-available`.**
 
-**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.75 (guacamole is not compatible with tomcat10), postgresql 13/14/15 (see below), guacamole 1.5.2, and s6_overlay 3.1.**
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.76 (guacamole is not compatible with tomcat10), postgresql 13/14/15 (see below), guacamole 1.5.2, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.2 <br> guacamole:latest | guacamole:1.5.2-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.2-alpine | guacamole:1.5.2-alpine-pg15
 
 # What's new / Changelog
+**2023-06-12** - Updated to Tomcat 9.0.76
+
 **2023-06-07** - :warning: It seems that Guacamole 1.5.2 [can segfault on some RDP connections](https://lists.apache.org/thread/ws7xykpm2cmnz2w42y9qy8kkn6hdpr0x). If you encounter that bug, please hold on for a bit until the Guacamole Team fixes it (and that will probably not take long).
 
 **2023-06-06** - FIX: Extensions were not properly cleaned between Guacamole versions bumps. This could create issues for example with multi-factor authentication. CAVEAT: if you use custom extensions, please make sure they contain the correct Guacamole version in their name (which was already the case to be honest). Thanks q20 for reporting the [issue](https://github.com/abesnier/docker-guacamole/issues/16).
