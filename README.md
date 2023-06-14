@@ -17,7 +17,7 @@ Ubuntu | guacamole:1.5.2 <br> guacamole:latest | guacamole:1.5.2-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.2-alpine | guacamole:1.5.2-alpine-pg15
 
 # What's new / Changelog
-**2023-06-14** - Ok, my previous fix for issue #16 did not work at all. Also, I noticed that if you enabled an extension and then tried to disable it, it would not work. That last bug went unoticed since I forked Oznu's image and started working on it!
+**2023-06-14** - Ok, my previous fix for issue #16 did not work at all. Also, I noticed that if you enabled an extension and then tried to disable it, it would not work. That last bug went unnoticed since I forked Oznu's image and started working on it!
 
 **2023-06-12** - Updated to Tomcat 9.0.76
 
