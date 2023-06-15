@@ -17,7 +17,7 @@ done
 #fi
 
 # enable extensions
-echo "Enabling selected Extensions"
+echo "Enabling selected extensions"
 for i in $(echo "$EXTENSIONS" | tr "," " "); do
   cp ${GUACAMOLE_HOME}/extensions-available/guacamole-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions
 done
