@@ -351,6 +351,12 @@ See [docker-compose.yml](https://github.com/abesnier/docker-guacamole/blob/maste
 
 ## Something's not working, what to do?
 
+### Guacamole does not show the real IP, but the docker interface one's
+There are multiple ways to show the real IP of the users, and it depends on your network configuration, and/or docker configuration.
+
+For example, [Issue #22](https://github.com/abesnier/docker-guacamole/issues/22) shows you a solution to show the clients IP behind a Cloudfalre tunnel.
+
+
 ### I upgraded to a newer version of Guacamole and/or PostegreSQL, and 2FA Authentication does not work anymore.
 It is possible that after some upgrades, either in the Guacamole version, or to a newer PostgreSQL version (13 to 14 or 15, after you carefully follow the [instructions here](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md) for example), you are faced with an error mzessage after entering your TOTP token. Guacamole will display the message "Verification failed. Please try again.".
 
