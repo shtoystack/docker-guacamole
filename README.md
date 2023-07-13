@@ -2,7 +2,7 @@
 
 **If you decide to try the new images, make sure to delete the previous extensions. Go to the `config/guacamole/extensions` directory, and delete the files that contain 1.4.0 in their names (**`rm *1.4.0*.jar`**). Having multiple versions of the same extension will create issues. You can similarly clean the `extensions-available`.**
 
-**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.76 (guacamole is not compatible with tomcat10), postgresql 13/14/15 (see below), guacamole 1.5.2, and s6_overlay 3.1.**
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.78 (guacamole is not compatible with tomcat10), postgresql 13/14/15 (see below), guacamole 1.5.2, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://github.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.2 <br> guacamole:latest | guacamole:1.5.2-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.2-alpine | guacamole:1.5.2-alpine-pg15
 
 # What's new / Changelog
+**2023-07-13** - Updated to Tomcat 9.0.78
+
 **2023-06-14** - Ok, my previous fix for issue #16 did not work at all. Also, I noticed that if you enabled an extension and then tried to disable it, it would not work. That last bug went unnoticed since I forked Oznu's image and started working on it!
 
 **2023-06-12** - Updated to Tomcat 9.0.76
