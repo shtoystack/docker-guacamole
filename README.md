@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.3 <br> guacamole:latest | guacamole:1.5.3-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 
 # What's new / Changelog
+**2023-08-07** - Created a new tag `latest-github` (based on the `latest` tag). This tag was created because the Guacamole Client that is available on the official website ommits a lot of changes that have been pushed to Github. The client and the extensions are built outside docker, and the source code will be uploaded on my github if anyone needs to audit it. See [Issue #23](https://github.com/abesnier/docker-guacamole/issues/23). This tag will be updated weekly, like the other ones.
+
 **2023-05-31** - Updated to Guacamole 1.5.3
 
 **2023-07-13** - Updated to Tomcat 9.0.78
