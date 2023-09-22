@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.3 <br> guacamole:latest | guacamole:1.5.3-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 
 # What's new / Changelog
+**2023-09-21** - Another update related to [Issue #22](https://GitHub.com/abesnier/docker-guacamole/issues/22): I've implemented the REMOTE_IP_VALVE_ENABLED environment variable, as it is used with the official Guacamole Client docker. This is useful when Guacamole is used behind a reverse proxy, to make the real client ip visible instead of the proxy's one. See the [documentation](https://guacamole.apache.org/doc/gug/guacamole-docker.html#running-guacamole-behind-a-proxy)
+
 **2023-08-26** - Updated to Tomcat 9.0.80
 
 **2023-08-19** - Updated to Tomcat 9.0.79
@@ -24,6 +26,9 @@ Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 **2023-08-08** - I decided to rename the `github` tag, and include versions with different flavours of PostgreSQL (13, 14 and 15). So the new tags are `github-pg13` (or `github`), `github-pg14` and `github-pg15`. They are based on the `latest`, `latest-pg14` and `latest-pg15` tags, and will be updated regularly as the other images. They also come with two new extensions, that are not very well documented as of today, see the extensions sections below for more details.
 
 **2023-08-07** - Created a new tag `latest-github` (based on the `latest` tag). This tag was created because the Guacamole Client that is available on the official website omits a lot of changes that have been pushed to GitHub. The client and the extensions are built outside docker, and the source code will be uploaded on my GitHub if anyone needs to audit it. See [Issue #23](https://GitHub.com/abesnier/docker-guacamole/issues/23). This tag will be updated weekly, like the other ones.
+
+<details>
+<summary>Older changelog entries</summary>
 
 **2023-05-31** - Updated to Guacamole 1.5.3
 
@@ -38,9 +43,6 @@ Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 **2023-06-06** - FIX: Extensions were not properly cleaned between Guacamole versions bumps. This could create issues for example with multi-factor authentication. CAVEAT: if you use custom extensions, please make sure they contain the correct Guacamole version in their name (which was already the case to be honest). Thanks q20 for reporting the [issue](https://GitHub.com/abesnier/docker-guacamole/issues/16).
 
 **2023-05-31** - Updated to Guacamole 1.5.2
-
-<details>
-<summary>Older changelog entries</summary>
 
 **2023-05-24** - Updated to Tomcat 9.0.75, S6 Overlay 3.1.5.0. Also added images that use PostgreSQL 15 (with Ubuntu and Alpine bases). Be careful! These images cannot be used as in-place replacement for another version of PostgreSQL, you need to follow [upgrade instructions](https://GitHub.com/abesnier/docker-guacamole/blob/master/UPGRADE.md) (and backup and double backup!)
 
@@ -380,6 +382,8 @@ See [docker-compose.yml](https://GitHub.com/abesnier/docker-guacamole/blob/maste
 ### Guacamole does not show the real IP, but the docker interface one's
 There are multiple ways to show the real IP of the users, and it depends on your network configuration, and/or docker configuration.
 
+I have implemented Guacamole's REMOTE_IP_VALVE_ENABLED environment variable. See the [documentation](https://guacamole.apache.org/doc/gug/guacamole-docker.html#running-guacamole-behind-a-proxy)
+
 For example, [Issue #22](https://GitHub.com/abesnier/docker-guacamole/issues/22) shows you a solution to show the clients IP behind a Cloudflare tunnel.
 
 
@@ -421,6 +425,9 @@ Now, you can setup the [session recording as per the Guacamole manual](https://g
 Recordings can be found in  your Guacamole server:
 
 ![recordings](https://user-images.GitHubusercontent.com/19927690/223395285-a8aef74d-00e2-4f3d-af15-92415a101557.png)
+
+Note that guacamole needs to be allowed to read and write into the directory storing the recordings. Please see [this discussion](https://lists.apache.org/thread/6z4rr7jo0cbvf1hf0s6m38kxgnkp7wcf) for a good summary of the requirements.
+
 
 
 ### Underscore character is not displayed in SSH sessions

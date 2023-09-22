@@ -41,6 +41,7 @@ RUN set -xe && \
             libwebp-dev \
             postgresql${PG_MAJOR} \
             ttf-dejavu \
+            xmlstarlet \
     && cd /tmp && \
     wget --no-check-certificate https://github.com/seanmiddleditch/libtelnet/releases/download/0.23/libtelnet-0.23.tar.gz && \
     tar -xzvf libtelnet-0.23.tar.gz && \

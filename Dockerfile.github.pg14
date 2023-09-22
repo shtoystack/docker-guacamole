@@ -71,6 +71,7 @@ RUN apt-get update && \
       libwebsockets-dev \
       make \
       postgresql-${PG_MAJOR} \
+      xmlstarlet \
 # Link FreeRDP to where guac expects it to be
 && ( ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabihf/freerdp ||  \
      ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabi/freerdp   || \

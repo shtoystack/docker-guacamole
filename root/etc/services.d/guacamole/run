@@ -5,6 +5,60 @@ until pg_isready; do
   sleep 1
 done
 
+# Prepare the tomcat server.xml if REMOTE_IP_VALVE has been specified 
+# Original code by Apache Guacamole, under APL 2.0
+# https://github.com/apache/guacamole-client/blob/6710b317379d2068603d9bc31ee29ebd5e366c45/guacamole-docker/bin/start.sh#L963
+
+
+ # Set up Tomcat RemoteIPValve
+if [ "$REMOTE_IP_VALVE_ENABLED" = "true" ]; then
+	# Add <Valve> element
+    xmlstarlet edit --inplace \
+        --insert '/Server/Service/Engine/Host/*' --type elem -n Valve \
+        --insert '/Server/Service/Engine/Host/Valve[not(@className)]' --type attr -n className -v org.apache.catalina.valves.RemoteIpValve \
+        $CATALINA_HOME/conf/server.xml
+
+    # Allowed IPs
+    if [ -z "$PROXY_ALLOWED_IPS_REGEX" ]; then
+        echo "Using default Tomcat allowed IPs regex"
+    else
+        xmlstarlet edit --inplace \
+            --insert '/Server/Service/Engine/Host/Valve[@className="org.apache.catalina.valves.RemoteIpValve"]' \
+            --type attr -n internalProxies -v "$PROXY_ALLOWED_IPS_REGEX" \
+            $CATALINA_HOME/conf/server.xml
+    fi
+
+    # X-Forwarded-For
+    if [ -z "$PROXY_IP_HEADER" ]; then
+        echo "Using default Tomcat proxy IP header"
+    else
+        xmlstarlet edit --inplace \
+            --insert "/Server/Service/Engine/Host/Valve[@className='org.apache.catalina.valves.RemoteIpValve']" \
+            --type attr -n remoteIpHeader -v "$PROXY_IP_HEADER" \
+            $CATALINA_HOME/conf/server.xml
+    fi
+
+    # X-Forwarded-Proto
+    if [ -z "$PROXY_PROTOCOL_HEADER" ]; then
+        echo "Using default Tomcat proxy protocol header"
+    else
+        xmlstarlet edit --inplace \
+            --insert "/Server/Service/Engine/Host/Valve[@className='org.apache.catalina.valves.RemoteIpValve']" \
+            --type attr -n protocolHeader -v "$PROXY_PROTOCOL_HEADER" \
+            $CATALINA_HOME/conf/server.xml
+    fi
+
+    # X-Forwarded-By
+    if [ -z "$PROXY_BY_HEADER" ]; then
+        echo "Using default Tomcat proxy forwarded by header"
+    else
+        xmlstarlet edit --inplace \
+            --insert "/Server/Service/Engine/Host/Valve[@className='org.apache.catalina.valves.RemoteIpValve']" \
+            --type attr -n remoteIpProxiesHeader -v "$PROXY_BY_HEADER" \
+            $CATALINA_HOME/conf/server.xml
+    fi
+fi
+
 # Create database if it does not exist
 psql -U postgres -lqt | cut -d \| -f 1 | grep -qw $POSTGRES_DB
 if [ $? -ne 0 ]; then
@@ -26,4 +80,4 @@ else
 fi
 
 echo "Starting guacamole client..."
-s6-setuidgid root /usr/local/tomcat/bin/catalina.sh run
+s6-setuidgid root $CATALINA_HOME/bin/catalina.sh run

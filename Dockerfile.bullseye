@@ -68,6 +68,7 @@ RUN apt-get update && apt-get upgrade -y && \
       libwebsockets-dev \
       make \
       postgresql-${PG_MAJOR} \
+      xmlstarlet \
 # Link FreeRDP to where guac expects it to be
 && ( ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabihf/freerdp ||  \
      ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp ||  \
