@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.3 <br> guacamole:latest | guacamole:1.5.3-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 
 # What's new / Changelog
+**2023-10-12** - Updated to Tomcat 9.0.81
+
 **2023-10-10** - Hopefully fixing an issue with S6 Overlay and armhf architectures.
 
 **2023-09-21** - Another update related to [Issue #22](https://GitHub.com/abesnier/docker-guacamole/issues/22): I've implemented the REMOTE_IP_VALVE_ENABLED environment variable, as it is used with the official Guacamole Client docker. This is useful when Guacamole is used behind a reverse proxy, to make the real client ip visible instead of the proxy's one. See the [documentation](https://guacamole.apache.org/doc/gug/guacamole-docker.html#running-guacamole-behind-a-proxy)
