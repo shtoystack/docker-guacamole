@@ -2,7 +2,7 @@
 
 **If you decide to try the new images, make sure to delete the previous extensions. Go to the `config/guacamole/extensions` directory, and delete the files that contain 1.4.0 in their names (**`rm *1.4.0*.jar`**). Having multiple versions of the same extension will create issues. You can similarly clean the `extensions-available`.**
 
-**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.80 (guacamole is not compatible with tomcat10), postgresql 13/14/15 (see below), guacamole 1.5.3, and s6_overlay 3.1.**
+**This is a fork of oznu/docker-guacamole, updated to tomcat 9.0.82 (guacamole is not compatible with tomcat10), postgresql 13/14/15 (see below), guacamole 1.5.3, and s6_overlay 3.1.**
 
 **If you are looking to upgrade from Oznu's image, or from an image that uses a version of PostgreSQL lower than 13, please have a look at the  [upgrade instructions](https://GitHub.com/abesnier/docker-guacamole/blob/master/UPGRADE.md). It is written for my images, but can be adapted for any image.**
 
@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.3 <br> guacamole:latest | guacamole:1.5.3-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 
 # What's new / Changelog
+**2023-10-16** - Updated to Tomcat 9.0.82
+
 **2023-10-12** - Updated to Tomcat 9.0.81
 
 **2023-10-10** - Hopefully fixing an issue with S6 Overlay and armhf architectures.
