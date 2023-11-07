@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.3 <br> guacamole:latest | guacamole:1.5.3-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 
 # What's new / Changelog
+**2023-11-07** - Updated to S6 Overlay 3.1.6.0
+
 **2023-10-16** - Updated to Tomcat 9.0.82
 
 **2023-10-12** - Updated to Tomcat 9.0.81
