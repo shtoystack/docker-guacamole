@@ -4,7 +4,7 @@
 #
 # 2022-12-19 - Changelog maintained in README.md
 
-FROM library/tomcat:9.0.82-jre11
+FROM library/tomcat:9.0.83-jre11
 
 ENV GUACAMOLE_HOME=/app/guacamole \
   PGDATA=/config/postgres \
@@ -101,8 +101,7 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
   && cd ${GUACAMOLE_HOME} \
   && rm -rf ${CATALINA_HOME}/webapps/ROOT \
   && curl -SLo ${GUACAMOLE_HOME}/lib/postgresql-${POSTGREJDBC_VER}.jar "https://jdbc.postgresql.org/download/postgresql-${POSTGREJDBC_VER}.jar" \                
-  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-auth-jdbc-${GUAC_VER}.tar.gz" \
-  && tar -xzf guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
+  && tar -xzf ${GUACAMOLE_HOME}/guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/guacamole-auth-jdbc-postgresql-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions/ \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/schema ${GUACAMOLE_HOME}/ \
   && rm -rf guacamole-auth-jdbc-${GUAC_VER} guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
