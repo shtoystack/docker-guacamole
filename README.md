@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.3 <br> guacamole:latest | guacamole:1.5.3-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 
 # What's new / Changelog
+**2023-12-07** - Updated to PostgreSQL JDBC 42.7.1
+
 **2023-11-21** - Updated to S6 Overlay 3.1.6.2 and PostgreSQL JDBC 42.7.0
 
 **2023-11-20** - Updated to S6 Overlay 3.1.6.1
