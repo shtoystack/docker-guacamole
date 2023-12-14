@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.3 <br> guacamole:latest | guacamole:1.5.3-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 
 # What's new / Changelog
+**2023-12-14** - Updated to Tomcat 9.0.84
+
 **2023-12-11** - Updated to Guacamole 1.5.4
 
 **2023-12-07** - Updated to PostgreSQL JDBC 42.7.1
