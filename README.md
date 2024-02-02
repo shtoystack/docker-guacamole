@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.3 <br> guacamole:latest | guacamole:1.5.3-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
 
 # What's new / Changelog
+**2024-02-02** - Added sso-ssl extension for the Github images (see below)
+
 **2024-02-01** - Updated Guacamole to 1.5.5 for the Github images
 
 **2024-01-10** - Updated to Tomcat 9.0.85
@@ -215,17 +217,17 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 
 # Available tags
 
-`1.5.3` `latest` , version 1.5.3, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.4` `latest` , version 1.5.4, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.3-pg14` `latest-pg14` , version 1.5.3, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.4-pg14` `latest-pg14` , version 1.5.4, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.3-pg15` `latest-pg15` , version 1.5.3, uses PostgreSQL 15, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.4-pg15` `latest-pg15` , version 1.5.4, uses PostgreSQL 15, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.3-bullseye`, version 1.5.3, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
+`1.5.4-bullseye`, version 1.5.4, uses PostgreSQL 14, based on latest Tomcat (latest available Debian Bullseye base image), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`1.5.3-alpine`, version 1.5.3, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
+`1.5.4-alpine`, version 1.5.4, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
 
-`1.5.3-alpine-pg15`, version 1.5.3, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
+`1.5.4-alpine-pg15`, version 1.5.4, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
 
 
 `1.4.0` , version 1.4.0, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
@@ -237,11 +239,11 @@ Oh, and by the way, updated to s6 overlay 3.1.1.1
 `1.4.0-alpine`, version 1.4.0, build from scratch from Alpine Edge, using latest Tomcat, PostgresJDBC driver and S6 overlay available at time of build.
 
 
-`github`, `github-pg13`, version 1.5.3, client and server built from the Apache GitHub repositories, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`github`, `github-pg13`, version 1.5.5, client and server built from the Apache GitHub repositories, uses PostgreSQL 13, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`github-pg14`, version 1.5.3, client and server built from the Apache GitHub repositories, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`github-pg14`, version 1.5.5, client and server built from the Apache GitHub repositories, uses PostgreSQL 14, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
-`github-pg15`, version 1.5.3, client and server built from the Apache GitHub repositories, uses PostgreSQL 15, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
+`github-pg15`, version 1.5.5, client and server built from the Apache GitHub repositories, uses PostgreSQL 15, based on latest Tomcat (Ubuntu base), PostgresJDBC driver and S6 Overlay available at time of build.
 
 
 
@@ -331,35 +333,37 @@ docker run \
 Currently the available extensions are:
 
 
-* [1.3.0] [1.4.0] [1.5.3] auth-ldap - [LDAP Authentication](https://guacamole.apache.org/doc/gug/ldap-auth.html)
+* [1.3.0] [1.4.0] [1.5.4] auth-ldap - [LDAP Authentication](https://guacamole.apache.org/doc/gug/ldap-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.3] auth-duo - [Duo two-factor authentication](https://guacamole.apache.org/doc/gug/duo-auth.html)
+* [1.3.0] [1.4.0] [1.5.4] auth-duo - [Duo two-factor authentication](https://guacamole.apache.org/doc/gug/duo-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.3] auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
+* [1.3.0] [1.4.0] [1.5.4] auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.3] auth-sso-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
+* [1.3.0] [1.4.0] [1.5.4] auth-sso-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.3] auth-sso-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
+* [1.3.0] [1.4.0] [1.5.4] auth-sso-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.3] auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
+* [1.3.0] [1.4.0] [1.5.4] auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
 
-* [1.3.0] [1.4.0] [1.5.3] auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
+* [1.3.0] [1.4.0] [1.5.4] auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
 
-* [1.3.0] [1.4.0] [1.5.3] auth-sso-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
+* [1.3.0] [1.4.0] [1.5.4] auth-sso-saml - [SAML Authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
 
-* [1.4.0] [1.5.3] auth-sso - SSO Authentication metapackage, contains classes for CAS, OpenID and SAML authentication (see links above)
+* [1.5.5] auth-sso-ssl - [SSL/Smart cards authenticatition](https://github.com/apache/guacamole-client/pull/797)
 
-* [1.4.0] [1.5.3] auth-json - [Encrypted JSON Authentication](https://guacamole.apache.org/doc/gug/json-auth.html)
+* [1.4.0] [1.5.4] auth-sso - SSO Authentication metapackage, contains classes for CAS, OpenID and SAML authentication (see links above)
 
-* [1.5.3] history-recording-storage - [In-application playback of recordings](https://guacamole.apache.org/doc/1.5.1/gug/recording-playback.html)
+* [1.4.0] [1.5.4] auth-json - [Encrypted JSON Authentication](https://guacamole.apache.org/doc/gug/json-auth.html)
 
-* [1.5.3] vault - [Support for retrieving secrets from key vaults](https://guacamole.apache.org/doc/1.5.1/gug/vault.html)
+* [1.5.5] history-recording-storage - [In-application playback of recordings](https://guacamole.apache.org/doc/1.5.1/gug/recording-playback.html)
 
-* [1.5.3] auth-ban - [Extension for automatically blocking brute-force auth attempts](https://GitHub.com/apache/guacamole-client/pull/758)
+* [1.5.4] vault - [Support for retrieving secrets from key vaults](https://guacamole.apache.org/doc/1.5.1/gug/vault.html)
 
-* [1.5.3] display-statistics - [Display graphics statistics at the bottom of the cielnt screen for remote desktop sessions (remote desktop fps, server fps, cleint fps, dropped frames)](https://GitHub.com/apache/guacamole-client/pull/681)
+* [1.5.5] auth-ban - [Extension for automatically blocking brute-force auth attempts](https://GitHub.com/apache/guacamole-client/pull/758)
 
+* [1.5.5] display-statistics - [Display graphics statistics at the bottom of the cielnt screen for remote desktop sessions (remote desktop fps, server fps, cleint fps, dropped frames)](https://GitHub.com/apache/guacamole-client/pull/681)
 
+Extensions marked as available for version 1.5.5 are only available with the `github` tags (`github`, `github-pg14` and `github-pg15`).
 
 You should only enable the extensions you require, if an extensions is not configured correctly in the `guacamole.properties` file it may prevent the system from loading. See the [official documentation](https://guacamole.apache.org/doc/gug/) for more details.
 

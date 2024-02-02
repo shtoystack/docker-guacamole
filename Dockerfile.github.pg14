@@ -108,7 +108,7 @@ RUN apt-get update && \
 # Special case for SSO extension as it bundles CAS, SAML and OpenID in subfolders
 # I keep the for loop, just in case future releases of guacamole bundles other extensions...
   && tar -xzf guacamole-auth-sso-${GUAC_VER}.tar.gz \
-  && for i in cas openid saml; do \
+  && for i in cas openid saml ssl; do \
     cp guacamole-auth-sso-${GUAC_VER}/${i}/guacamole-auth-sso-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
   ;done \
   && rm -rf guacamole-auth-sso-${GUAC_VER} guacamole-auth-sso-${GUAC_VER}.tar.gz \
