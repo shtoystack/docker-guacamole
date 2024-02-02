@@ -12,9 +12,9 @@
 # Summary of images
 Base OS | PostgreSQL 13 | PostgreSQL 14 | PostgreSQL 15
 ---|---|---|---
-Bullseye | guacamole:1.5.3-bullseye | N/A | N/A
-Ubuntu | guacamole:1.5.3 <br> guacamole:latest | guacamole:1.5.3-pg14 <br> guacamole:latest-pg14 | guacamole:1.5.3-pg15 <br> guacamole:latest-pg15
-Alpine | N/A | guacamole:1.5.3-alpine | guacamole:1.5.3-alpine-pg15
+Bullseye | guacamole:1.5.4-bullseye | N/A | N/A
+Ubuntu | guacamole:1.5.4 <br> guacamole:latest | guacamole:1.5.4-pg14 <br> guacamole:latest-pg14 | guacamole:1.5.4-pg15 <br> guacamole:latest-pg15
+Alpine | N/A | guacamole:1.5.4-alpine | guacamole:1.5.4-alpine-pg15
 
 # What's new / Changelog
 **2024-02-02** - Added sso-ssl extension for the Github images (see below)
@@ -589,7 +589,7 @@ And of course, don't forget to look at the [official documentation](https://guac
 
 ## License
 
-Copyright (C) 2021-2023 abesnier
+Copyright (C) 2021-2024 abesnier
 
 Copyright (C) 2017-2020 oznu
 
