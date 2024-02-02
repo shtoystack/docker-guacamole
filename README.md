@@ -23,6 +23,9 @@ Alpine | N/A | guacamole:1.5.4-alpine | guacamole:1.5.4-alpine-pg15
 
 **2024-01-10** - Updated to Tomcat 9.0.85
 
+<details>
+<summary>Older changelog entries</summary>
+
 **2023-12-14** - Updated to Tomcat 9.0.84
 
 **2023-12-11** - Updated to Guacamole 1.5.4
@@ -34,9 +37,6 @@ Alpine | N/A | guacamole:1.5.4-alpine | guacamole:1.5.4-alpine-pg15
 **2023-11-20** - Updated to S6 Overlay 3.1.6.1
 
 **2023-11-16** - Updated to Tomcat 9.0.83
-
-<details>
-<summary>Older changelog entries</summary>
 
 **2023-11-07** - Updated to S6 Overlay 3.1.6.0
 
