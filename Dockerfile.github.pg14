@@ -4,14 +4,14 @@
 #
 # 2022-12-19 - changelog maintained in README
 
-FROM library/tomcat:9.0.86-jre11
+FROM library/tomcat:9.0.87-jre11
 
 ENV GUACAMOLE_HOME=/app/guacamole \
   PGDATA=/config/postgres \
   POSTGRES_USER=guacamole \
   POSTGRES_DB=guacamole_db \
   S6OVERLAY_VER=3.1.6.2 \
-  POSTGREJDBC_VER=42.7.2 \
+  POSTGREJDBC_VER=42.7.3 \
   GUAC_DOWN_PATH=https://dlcdn.apache.org/guacamole \
   GUAC_VER=1.5.5 \
   GUAC_VER_PATH=1.5.5 \
@@ -82,7 +82,7 @@ RUN apt-get update && \
 	 ln -s /usr/local/lib/freerdp /usr/lib/aarch64-linux-gnu/freerdp   || true ) \
 # Install guacamole-server
 && mkdir /git \
-  && cd /git && git clone https://github.com/apache/guacamole-server.git --depth=1 -b master \
+  && cd /git && git clone https://github.com/apache/guacamole-server.git --depth=1 -b main \
   && cd guacamole-server \
   && autoreconf -fi \
   && ./configure --enable-allow-freerdp-snapshots \

@@ -5,13 +5,13 @@ ENV CATALINA_HOME=/opt/tomcat \
     PGDATA=/config/postgres \
     POSTGRES_USER=guacamole \
     POSTGRES_DB=guacamole_db \
-    POSTGREJDBC_VER=42.7.2 \
+    POSTGREJDBC_VER=42.7.3 \
     S6OVERLAY_VER=3.1.6.2 \
     GUAC_DOWN_PATH=https://dlcdn.apache.org/guacamole \
     GUAC_VER=1.5.4 \
     GUAC_VER_PATH=1.5.4 \
     PG_MAJOR=14 \
-    TOMCAT_VER=9.0.86
+    TOMCAT_VER=9.0.87
 
 RUN set -xe && \
     apk update && \
@@ -76,7 +76,7 @@ RUN set -xe && \
     wget https://dlcdn.apache.org/tomcat/tomcat-9/v$TOMCAT_VER/bin/apache-tomcat-$TOMCAT_VER.tar.gz --no-check-certificate && \
     tar xvzf apache-tomcat-$TOMCAT_VER.tar.gz --strip-components 1 --directory /opt/tomcat &&\
     cd /git && \
-    git clone https://github.com/apache/guacamole-server.git --depth=1 -b master && cd guacamole-server -f && autoreconf -fi && \
+    git clone https://github.com/apache/guacamole-server.git --depth=1 -b main && cd guacamole-server -f && autoreconf -fi && \
     ./configure --enable-allow-freerdp-snapshots  --with-init-dir=/etc/init.d &&\
     cd /git/guacamole-server && \
     make -j$(getconf _NPROCESSORS_ONLN) && \
