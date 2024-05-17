@@ -560,7 +560,7 @@ The solution is simply to remove the jar file in the config directory, and resta
 
 ### I forgot my password and have deleted the default guacadmin user, what can I do?
 
-This [https://github.com/abesnier/docker-guacamole/issues/35](issue) was raised on Github, and here are the solutions:
+This [issue](https://github.com/abesnier/docker-guacamole/issues/35) was raised on Github, and here are the solutions:
 
 1 - Delete the content of the config directory, and the full setup of Guacamole will be reset. You will lose all your connections, history, etc... but the default user will be re-generated.
 
