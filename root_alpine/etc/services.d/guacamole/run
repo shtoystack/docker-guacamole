@@ -10,7 +10,7 @@ done
 # https://github.com/apache/guacamole-client/blob/6710b317379d2068603d9bc31ee29ebd5e366c45/guacamole-docker/bin/start.sh#L963
 
 # Set up Tomcat RemoteIPValve
-if [ "$REMOTE_IP_VALVE_ENABLED" = "true" ]; then
+if [ "$REMOTE_IP_VALVE_ENABLED" = "true" ] && [ $(grep RemoteIpValve /usr/local/tomcat/conf/server.xml | wc -l) = 0 ]; then
 	# Add <Valve> element
     xmlstarlet edit --inplace \
         --insert '/Server/Service/Engine/Host/*' --type elem -n Valve \
