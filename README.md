@@ -17,6 +17,8 @@ Ubuntu | guacamole:1.5.4 <br> guacamole:latest | guacamole:1.5.4-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.4-alpine | guacamole:1.5.4-alpine-pg15
 
 # What's new / Changelog
+**2024-07-12** - Updated with fix from WindoC ([Issue #38](https://GitHub.com/abesnier/docker-guacamole/issues/38))
+
 **2024-07-09** - Updated to Tomcat 9.0.91
 
 **2024-05-15** - Updated to Tomcat 9.0.89
