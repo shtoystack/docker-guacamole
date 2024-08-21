@@ -10,7 +10,7 @@ ENV CATALINA_HOME=/opt/tomcat \
     GUAC_DOWN_PATH=https://dlcdn.apache.org/guacamole \
     GUAC_VER=1.5.5 \
     GUAC_VER_PATH=1.5.5 \
-    PG_MAJOR=14 \
+    PG_MAJOR=16 \
     TOMCAT_VER=9.0.93
 
 RUN set -xe && \
@@ -113,7 +113,7 @@ RUN set -xe && \
   && rm -rf guacamole-vault-${GUAC_VER} guacamole-vault-${GUAC_VER}.tar.gz
 
 COPY root /
-COPY root_alpine /
+COPY root_alpine_pg15 /
 
 ENV PATH=/usr/lib/postgresql/${PG_MAJOR}/bin:$PATH \
     GUACAMOLE_HOME=/config/guacamole \

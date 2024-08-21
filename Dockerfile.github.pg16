@@ -15,7 +15,15 @@ ENV GUACAMOLE_HOME=/app/guacamole \
   GUAC_DOWN_PATH=https://dlcdn.apache.org/guacamole \
   GUAC_VER=1.5.5 \
   GUAC_VER_PATH=1.5.5 \
-  PG_MAJOR=13
+  PG_MAJOR=16
+  
+RUN mkdir -p ${GUACAMOLE_HOME} \
+  ${GUACAMOLE_HOME}/lib \
+  ${GUACAMOLE_HOME}/extensions \
+  ${GUACAMOLE_HOME}/extensions-available 
+
+COPY ./guacamole-${GUAC_VER}.war ${CATALINA_HOME}/webapps/ROOT.war 
+COPY ./extensions ${GUACAMOLE_HOME} 
 
 RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
       apt-transport-https  \
@@ -40,15 +48,10 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
     && tar -C / -Jxpf /tmp/s6-overlay-symlinks-noarch.tar.xz \
     && tar -C / -Jxpf /tmp/syslogd-overlay-noarch.tar.xz \
     && cd / && rm /tmp/*.tar.xz \
-# Create guacamole directories
-&& mkdir -p ${GUACAMOLE_HOME} \ 
-              ${GUACAMOLE_HOME}/lib \
-              ${GUACAMOLE_HOME}/extensions \
-              ${GUACAMOLE_HOME}/extensions-available \
-			  && cd ${GUACAMOLE_HOME} \
+    && cd ${GUACAMOLE_HOME} \
 # Add PostGresql repository & Install dependencies
 && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg && \
-    echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" | tee  /etc/apt/sources.list.d/pgdg.list && \
+    echo "deb [signed-by=/etc/apt/trusted.gpg.d/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" | tee  /etc/apt/sources.list.d/pgdg.list && \
     apt-get update && apt-get upgrade -y -t jammy-backports && \
     apt-get install -y \
       freerdp2-dev \
@@ -95,34 +98,28 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
   && rm -rf guacamole-server-${GUAC_VER}.tar.gz guacamole-server-${GUAC_VER} \
   && ldconfig \
 # Install guacamole-client and postgres auth adapter
-  && set -xe \
+  && cd ${GUACAMOLE_HOME} \
   && rm -rf ${CATALINA_HOME}/webapps/ROOT \
-  && curl -SLo ${CATALINA_HOME}/webapps/ROOT.war "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-${GUAC_VER}.war" \
   && curl -SLo ${GUACAMOLE_HOME}/lib/postgresql-${POSTGREJDBC_VER}.jar "https://jdbc.postgresql.org/download/postgresql-${POSTGREJDBC_VER}.jar" \                
-  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-auth-jdbc-${GUAC_VER}.tar.gz" \
-  && tar -xzf guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
+  && tar -xzf ${GUACAMOLE_HOME}/guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/guacamole-auth-jdbc-postgresql-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions/ \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/schema ${GUACAMOLE_HOME}/ \
   && rm -rf guacamole-auth-jdbc-${GUAC_VER} guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
 # Add optional extensions
-  && for i in auth-duo auth-quickconnect auth-header auth-ldap auth-json auth-totp history-recording-storage; do \         
-    echo "${GUAC_DOWN_PATH}/${GUAC_VER}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" \
-    && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" \
-    && tar -xzf guacamole-${i}-${GUAC_VER}.tar.gz \
+  && for i in auth-duo auth-quickconnect auth-header auth-ldap auth-json auth-totp history-recording-storage auth-ban display-statistics; do \       
+    tar -xzf guacamole-${i}-${GUAC_VER}.tar.gz \
     && cp guacamole-${i}-${GUAC_VER}/guacamole-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
     && rm -rf guacamole-${i}-${GUAC_VER} guacamole-${i}-${GUAC_VER}.tar.gz \
   ;done \
 # Special case for SSO extension as it bundles CAS, SAML and OpenID in subfolders
 # I keep the for loop, just in case future releases of guacamole bundles other extensions...
-  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-auth-sso-${GUAC_VER}.tar.gz" \
   && tar -xzf guacamole-auth-sso-${GUAC_VER}.tar.gz \
-  && for i in cas openid saml; do \
+  && for i in cas openid saml ssl; do \
     cp guacamole-auth-sso-${GUAC_VER}/${i}/guacamole-auth-sso-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
   ;done \
   && rm -rf guacamole-auth-sso-${GUAC_VER} guacamole-auth-sso-${GUAC_VER}.tar.gz \
 # Special case for Vault extension. Currently supports only ksm, but it seems there are plans for future providers
 # I keep the for loop, just in case future releases of guacamole bundles other extensions...
-  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-vault-${GUAC_VER}.tar.gz" \
   && tar -xzf guacamole-vault-${GUAC_VER}.tar.gz \
   && for i in ksm; do \
     cp guacamole-vault-${GUAC_VER}/${i}/guacamole-vault-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
@@ -155,6 +152,7 @@ ENV GUACD_LOG_LEVEL=info
 ENV S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
 
 COPY root /
+COPY root_pg15 /
 
 WORKDIR /config
 

@@ -4,7 +4,7 @@
 #
 # 2022-12-19 - changelog maintained in README
 
-FROM library/tomcat:9.0.91-jre11
+FROM library/tomcat:9.0.93-jre11-temurin-jammy
 
 ENV GUACAMOLE_HOME=/app/guacamole \
   PGDATA=/config/postgres \
@@ -20,8 +20,14 @@ ENV GUACAMOLE_HOME=/app/guacamole \
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends\
-      curl \
+      apt-transport-https  \
+      ca-certificates  \
+      curl  \
       git \
+      gnupg2  \
+      gpg  \
+      lsb-release  \
+      software-properties-common  \
       xz-utils \
 # Apply the s6-overlay
 && cd /tmp \
@@ -43,7 +49,9 @@ RUN apt-get update && \
               ${GUACAMOLE_HOME}/extensions-available \
   && cd ${GUACAMOLE_HOME} \
 # Add PostGresql repository & Install dependencies
-&& apt-get update && apt-get upgrade -y -t jammy-backports && \
+&& curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg && \
+    echo "deb [signed-by=/etc/apt/trusted.gpg.d/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" | tee  /etc/apt/sources.list.d/pgdg.list && \
+    apt-get update && apt-get upgrade -y -t jammy-backports && \
       apt-get install -y \
       freerdp2-dev \
       ghostscript \
