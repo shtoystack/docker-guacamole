@@ -17,6 +17,10 @@ Ubuntu | guacamole:1.5.5 <br> guacamole:latest | guacamole:1.5.5-pg14 <br> guaca
 Alpine | N/A | guacamole:1.5.5-alpine | guacamole:1.5.5-alpine-pg15 | guacamole:1.5.5-alpine-pg16
 
 # What's- new / Changelog
+**2024-09-04** - Fixed an issue with PostgreSQL 16 images ([Issue #40](https://GitHub.com/abesnier/docker-guacamole/issues/40))
+
+**2024-08-26** - Updated to PostgreSQL JDBC 42.7.4
+
 **2024-08-21** - Updated to Tomcat 9.0.93, and added images for Postgresql 16 (suffixed with pg16)
 
 **2024-07-12** - Updated with fix from WindoC ([Issue #38](https://GitHub.com/abesnier/docker-guacamole/issues/38))
