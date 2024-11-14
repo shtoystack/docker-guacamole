@@ -29,17 +29,16 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
       xz-utils \
 # Apply the s6-overlay
 && cd /tmp \
+&& ARCH=$(case $(uname -m) in x86_64) echo "x86_64" ;; aarch64) echo "aarch64" ;; armv7l|armhf) echo "armhf" ;; *) echo "unsupported" ;; esac) \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-noarch.tar.xz \
-&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-x86_64.tar.xz \
-&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-aarch64.tar.xz \
-&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-armhf.tar.xz \
+&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-${ARCH}.tar.xz \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-symlinks-noarch.tar.xz \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/syslogd-overlay-noarch.tar.xz \
 && tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz \
-    && if [ "$(arch)" = "x86_64" ] ; then tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz; elif [ "$(arch)" = "armhf" ]||[ "$(arch)" = "armv7l" ] ; then tar -C / -Jxpf /tmp/s6-overlay-armhf.tar.xz; else tar -C / -Jxpf /tmp/s6-overlay-aarch64.tar.xz; fi  \
-    && tar -C / -Jxpf /tmp/s6-overlay-symlinks-noarch.tar.xz \
-    && tar -C / -Jxpf /tmp/syslogd-overlay-noarch.tar.xz \
-    && cd / && rm /tmp/*.tar.xz \
+&& tar -C / -Jxpf /tmp/s6-overlay-${ARCH}.tar.xz \
+&& tar -C / -Jxpf /tmp/s6-overlay-symlinks-noarch.tar.xz \
+&& tar -C / -Jxpf /tmp/syslogd-overlay-noarch.tar.xz \
+&& cd / && rm /tmp/*.tar.xz \
 # Create guacamole directories
 && mkdir -p ${GUACAMOLE_HOME} \ 
               ${GUACAMOLE_HOME}/lib \
