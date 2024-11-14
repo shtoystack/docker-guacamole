@@ -94,12 +94,11 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
   && cd .. \
   && rm -rf guacamole-server-${GUAC_VER}.tar.gz guacamole-server-${GUAC_VER} \
   && ldconfig \
-# Install guacamole-client and postgres auth adapter
   && set -xe \
   && rm -rf ${CATALINA_HOME}/webapps/ROOT \
-  && curl -SLo ${CATALINA_HOME}/webapps/ROOT.war "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-${GUAC_VER}.war" \
-  && curl -SLo ${GUACAMOLE_HOME}/lib/postgresql-${POSTGREJDBC_VER}.jar "https://jdbc.postgresql.org/download/postgresql-${POSTGREJDBC_VER}.jar" \                
-  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-auth-jdbc-${GUAC_VER}.tar.gz" \
+  && curl -L -o ${CATALINA_HOME}/webapps/ROOT.war https://github.com/shtoystack/toystack-os-client/releases/download/v0.0.1/guacamole-1.5.5.war  \
+  && curl -SLo ${GUACAMOLE_HOME}/lib/postgresql-${POSTGREJDBC_VER}.jar "https://jdbc.postgresql.org/download/postgresql-${POSTGREJDBC_VER}.jar"   \                
+  && curl -L -o guacamole-auth-jdbc-1.5.5.tar.gz https://github.com/shtoystack/toystack-os-client/releases/download/v0.0.1/guacamole-auth-jdbc.tar.gz  \
   && tar -xzf guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/guacamole-auth-jdbc-postgresql-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions/ \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/schema ${GUACAMOLE_HOME}/ \
@@ -146,8 +145,8 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/* /var/tmp/* ~/.m2 /git
 
-COPY ./guacamole-branding-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions
-COPY ./guacamole-branding-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available
+# COPY ./guacamole-branding-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions
+# COPY ./guacamole-branding-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available
 
 ENV PATH=/usr/lib/postgresql/${PG_MAJOR}/bin:$PATH
 ENV GUACAMOLE_HOME=/config/guacamole
