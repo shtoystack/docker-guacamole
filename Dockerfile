@@ -10,6 +10,7 @@ ENV GUACAMOLE_HOME=/app/guacamole \
   PGDATA=/config/postgres \
   POSTGRES_USER=guacamole \
   POSTGRES_DB=guacamole_db \
+  POSTGRES_PASSWORD=toystack \
   S6OVERLAY_VER=3.2.0.2 \
   POSTGREJDBC_VER=42.7.4 \
   GUAC_DOWN_PATH=https://dlcdn.apache.org/guacamole \
@@ -29,7 +30,7 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
       xz-utils \
 # Apply the s6-overlay
 && cd /tmp \
-&& ARCH=$(case $(uname -m) in x86_64) echo "x86_64" ;; aarch64) echo "aarch64" ;; armv7l|armhf) echo "armhf" ;; *) echo "unsupported" ;; esac) \
+ARCH=x86_64 \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-noarch.tar.xz \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-${ARCH}.tar.xz \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-symlinks-noarch.tar.xz \
@@ -39,6 +40,8 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
 && tar -C / -Jxpf /tmp/s6-overlay-symlinks-noarch.tar.xz \
 && tar -C / -Jxpf /tmp/syslogd-overlay-noarch.tar.xz \
 && cd / && rm /tmp/*.tar.xz \
+
+# build for amd.
 # Create guacamole directories
 && mkdir -p ${GUACAMOLE_HOME} \ 
               ${GUACAMOLE_HOME}/lib \
@@ -155,8 +158,13 @@ ENV S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
 COPY root /
 COPY root_pg15 /
 
+# Allow external connections to PostgreSQL
+RUN echo "host all all 0.0.0.0/0 md5" >> /config/postgresql/${PG_MAJOR}/main/pg_hba.conf \
+  && echo "listen_addresses='*'" >> /config/postgresql/${PG_MAJOR}/main/postgresql.conf
+
 WORKDIR /config
 
+EXPOSE 5432
 EXPOSE 8080
 
 ENTRYPOINT [ "/init" ]
