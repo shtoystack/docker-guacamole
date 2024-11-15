@@ -28,7 +28,7 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
       lsb-release  \
       software-properties-common  \
       xz-utils \
-# Apply the s6-overlay
+# Apply the s6-overlay6
 && cd /tmp \
 ARCH=x86_64 \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-noarch.tar.xz \
