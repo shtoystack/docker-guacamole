@@ -157,8 +157,10 @@ COPY root_pg15 /
 
 WORKDIR /config
 
-EXPOSE 5432
+
 EXPOSE 8080
+
+
 
 ENTRYPOINT [ "/init" ]
 
