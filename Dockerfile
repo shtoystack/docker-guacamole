@@ -8,8 +8,10 @@ FROM library/tomcat:9.0.96-jre11-temurin-jammy
 
 ENV GUACAMOLE_HOME=/app/guacamole \
   PGDATA=/config/postgres \
-  POSTGRES_USER=guacamole \
-  POSTGRES_DB=guacamole_db \
+  POSTGRES_HOST=ts-toustack-os-4akvl-prod.toystack.store \
+  POSTGRES_USER=postgres \
+  POSTGRES_DB=postgres \
+  POSTGRES_PORT=19387 \
   POSTGRES_PASSWORD=toystack \
   S6OVERLAY_VER=3.2.0.2 \
   POSTGREJDBC_VER=42.7.4 \
@@ -30,17 +32,15 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
       xz-utils \
 # Apply the s6-overlay6
 && cd /tmp \
-ARCH=x86_64 \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-noarch.tar.xz \
-&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-${ARCH}.tar.xz \
+&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-x86_64.tar.xz \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-symlinks-noarch.tar.xz \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/syslogd-overlay-noarch.tar.xz \
 && tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz \
-&& tar -C / -Jxpf /tmp/s6-overlay-${ARCH}.tar.xz \
+&& tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz \
 && tar -C / -Jxpf /tmp/s6-overlay-symlinks-noarch.tar.xz \
 && tar -C / -Jxpf /tmp/syslogd-overlay-noarch.tar.xz \
 && cd / && rm /tmp/*.tar.xz \
-
 # build for amd.
 # Create guacamole directories
 && mkdir -p ${GUACAMOLE_HOME} \ 
@@ -147,8 +147,6 @@ ARCH=x86_64 \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/* /var/tmp/* ~/.m2 /git
 
-# COPY ./guacamole-branding-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions
-# COPY ./guacamole-branding-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available
 
 ENV PATH=/usr/lib/postgresql/${PG_MAJOR}/bin:$PATH
 ENV GUACAMOLE_HOME=/config/guacamole
@@ -157,10 +155,6 @@ ENV S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0
 
 COPY root /
 COPY root_pg15 /
-
-# Allow external connections to PostgreSQL
-RUN echo "host all all 0.0.0.0/0 md5" >> /config/postgresql/${PG_MAJOR}/main/pg_hba.conf \
-  && echo "listen_addresses='*'" >> /config/postgresql/${PG_MAJOR}/main/postgresql.conf
 
 WORKDIR /config
 
