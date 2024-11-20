@@ -33,11 +33,11 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
 # Apply the s6-overlay6
 && cd /tmp \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-noarch.tar.xz \
-&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-x86_64.tar.xz \
+&& curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-aarch64.tar.xz \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/s6-overlay-symlinks-noarch.tar.xz \
 && curl -OfsSL https://github.com/just-containers/s6-overlay/releases/download/v${S6OVERLAY_VER}/syslogd-overlay-noarch.tar.xz \
 && tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz \
-&& tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz \
+&& tar -C / -Jxpf /tmp/s6-overlay-aarch64.tar.xz \
 && tar -C / -Jxpf /tmp/s6-overlay-symlinks-noarch.tar.xz \
 && tar -C / -Jxpf /tmp/syslogd-overlay-noarch.tar.xz \
 && cd / && rm /tmp/*.tar.xz \
@@ -81,7 +81,6 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
 # Link FreeRDP to where guac expects it to be
 && ( ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabihf/freerdp ||  \
      ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabi/freerdp   || \
-     ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp    ||  \
      ln -s /usr/local/lib/freerdp /usr/lib/aarch64-linux-gnu/freerdp   || \
 	 ln -s /usr/local/lib/freerdp /usr/lib/ppc64el-linux-gnu/freerdp   || \
 	 ln -s /usr/local/lib/freerdp /usr/lib/aarch64-linux-gnu/freerdp   || true ) \
