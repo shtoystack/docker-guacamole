@@ -17,6 +17,7 @@ ENV GUACAMOLE_HOME=/app/guacamole \
   POSTGREJDBC_VER=42.7.4 \
   GUAC_DOWN_PATH=https://dlcdn.apache.org/guacamole \
   GUAC_VER=1.5.5 \
+  RELEASE_VERSION=marbleitalia0.0.1 \
   GUAC_VER_PATH=1.5.5 \
   PG_MAJOR=15
 
@@ -97,32 +98,33 @@ RUN set -xe && apt-get update && apt-get upgrade -y && apt-get install -y --no-i
   && ldconfig \
   && set -xe \
   && rm -rf ${CATALINA_HOME}/webapps/ROOT \
-  && curl -L -o ${CATALINA_HOME}/webapps/ROOT.war https://github.com/shtoystack/toystack-os-client/releases/download/v0.0.1/guacamole-1.5.5.war  \
+  && curl -L -o ${CATALINA_HOME}/webapps/ROOT.war https://github.com/shtoystack/toystack-os-client/releases/download/${RELEASE_VERSION}/guacamole-1.5.5.war  \
   && curl -SLo ${GUACAMOLE_HOME}/lib/postgresql-${POSTGREJDBC_VER}.jar "https://jdbc.postgresql.org/download/postgresql-${POSTGREJDBC_VER}.jar"   \                
-  && curl -L -o guacamole-auth-jdbc-1.5.5.tar.gz https://github.com/shtoystack/toystack-os-client/releases/download/v0.0.1/guacamole-auth-jdbc.tar.gz  \
+  && curl -L -o guacamole-auth-jdbc-1.5.5.tar.gz https://github.com/shtoystack/toystack-os-client/releases/download/${RELEASE_VERSION}/guacamole-auth-jdbc.tar.gz  \
   && tar -xzf guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/guacamole-auth-jdbc-postgresql-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions/ \
   && cp -R guacamole-auth-jdbc-${GUAC_VER}/postgresql/schema ${GUACAMOLE_HOME}/ \
   && rm -rf guacamole-auth-jdbc-${GUAC_VER} guacamole-auth-jdbc-${GUAC_VER}.tar.gz \
 # Add optional extensions
   && for i in auth-duo auth-quickconnect auth-header auth-ldap auth-json auth-totp history-recording-storage; do \         
-    echo "${GUAC_DOWN_PATH}/${GUAC_VER}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" \
-    && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-${i}-${GUAC_VER}.tar.gz" \
+    echo "Downloading jars from release" \
+    && curl -L -o guacamole-${i}-${GUAC_VER}.tar.gz https://github.com/shtoystack/toystack-os-client/releases/download/${RELEASE_VERSION}/guacamole-${i}-${GUAC_VER}.tar.gz  \
     && tar -xzf guacamole-${i}-${GUAC_VER}.tar.gz \
     && cp guacamole-${i}-${GUAC_VER}/guacamole-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
     && rm -rf guacamole-${i}-${GUAC_VER} guacamole-${i}-${GUAC_VER}.tar.gz \
   ;done \
 # Special case for SSO extension as it bundles CAS, SAML and OpenID in subfolders
 # I keep the for loop, just in case future releases of guacamole bundles other extensions...
-  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-auth-sso-${GUAC_VER}.tar.gz" \
-  && tar -xzf guacamole-auth-sso-${GUAC_VER}.tar.gz \
-  && for i in cas openid saml; do \
-    cp guacamole-auth-sso-${GUAC_VER}/${i}/guacamole-auth-sso-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
-  ;done \
-  && rm -rf guacamole-auth-sso-${GUAC_VER} guacamole-auth-sso-${GUAC_VER}.tar.gz \
+  # && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-auth-sso-${GUAC_VER}.tar.gz" \
+  # && tar -xzf guacamole-auth-sso-${GUAC_VER}.tar.gz \
+  # && for i in cas openid saml; do \
+  #   cp guacamole-auth-sso-${GUAC_VER}/${i}/guacamole-auth-sso-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
+  # ;done \
+  # && rm -rf guacamole-auth-sso-${GUAC_VER} guacamole-auth-sso-${GUAC_VER}.tar.gz \
 # Special case for Vault extension. Currently supports only ksm, but it seems there are plans for future providers
 # I keep the for loop, just in case future releases of guacamole bundles other extensions...
-  && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-vault-${GUAC_VER}.tar.gz" \
+  && curl -L -o guacamole-vault-${GUAC_VER}.tar.gz https://github.com/shtoystack/toystack-os-client/releases/download/${RELEASE_VERSION}/guacamole-vault-${GUAC_VER}.tar.gz  \
+ # && curl -SLO "${GUAC_DOWN_PATH}/${GUAC_VER_PATH}/binary/guacamole-vault-${GUAC_VER}.tar.gz" \
   && tar -xzf guacamole-vault-${GUAC_VER}.tar.gz \
   && for i in ksm; do \
     cp guacamole-vault-${GUAC_VER}/${i}/guacamole-vault-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
